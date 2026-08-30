@@ -1,16 +1,278 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>KCA Awards</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KCA Digital Album Store</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #fffafc;
+            color: #292329;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            width: 100%;
+            padding: 24px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee4e9;
+        }
+
+        .logo {
+            font-family: "Playfair Display", serif;
+            font-size: 24px;
+            letter-spacing: 3px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #292329;
+            margin-left: 28px;
+            font-size: 13px;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .tiny {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #b9879e;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(55px, 10vw, 110px);
+            font-weight: 500;
+            line-height: 0.95;
+            margin-bottom: 25px;
+        }
+
+        .subtitle {
+            max-width: 450px;
+            line-height: 1.7;
+            color: #766c73;
+            font-size: 14px;
+            margin-bottom: 35px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #292329;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px #d9cbd2;
+        }
+
+        /* FEATURED ALBUM */
+
+        .featured {
+            padding: 90px 7%;
+            background: #f8eef3;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: "Playfair Display", serif;
+            font-size: 42px;
+            margin-bottom: 45px;
+        }
+
+        .album {
+            max-width: 900px;
+            margin: auto;
+            background: #fffafc;
+            padding: 35px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            gap: 45px;
+            text-align: left;
+            box-shadow: 0 15px 50px rgba(80, 50, 70, 0.08);
+        }
+
+        .album-cover {
+            width: 300px;
+            height: 300px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #e7c4d3, #f9e9ef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            color: white;
+            letter-spacing: 3px;
+            flex-shrink: 0;
+        }
+
+        .album-info h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .album-info p {
+            color: #766c73;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .free {
+            display: inline-block;
+            border: 1px solid #d8bdca;
+            color: #a16f87;
+            padding: 6px 13px;
+            border-radius: 20px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 35px;
+            text-align: center;
+            font-size: 11px;
+            color: #988e94;
+        }
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 20px;
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 11px;
+            }
+
+            .album {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .album-cover {
+                width: 100%;
+                height: 300px;
+            }
+
+        }
+
+    </style>
 </head>
 
 <body>
 
-    <h1>WELCOME TO KCA AWARDS</h1>
+    <nav>
 
-    <p>The Digital Album Experience</p>
+        <div class="logo">KCA</div>
 
-    <button>ENTER</button>
+        <div>
+            <a href="#">HOME</a>
+            <a href="#albums">ALBUMS</a>
+            <a href="#">COLLECTION</a>
+        </div>
+
+    </nav>
+
+
+    <section class="hero">
+
+        <div class="tiny">THE DIGITAL ALBUM EXPERIENCE</div>
+
+        <h1>KCA<br>AWARDS</h1>
+
+        <p class="subtitle">
+            Enter the world of KCA and discover exclusive digital albums,
+            collect photocards and find out who you pulled.
+        </p>
+
+        <a href="#albums" class="button">
+            ENTER THE STORE ✦
+        </a>
+
+    </section>
+
+
+    <section class="featured" id="albums">
+
+        <div class="tiny">FEATURED RELEASE</div>
+
+        <h2 class="section-title">The First Collection</h2>
+
+        <div class="album">
+
+            <div class="album-cover">
+                KCA<br>01
+            </div>
+
+            <div class="album-info">
+
+                <div class="free">FREE DIGITAL ALBUM</div>
+
+                <h2>COMING SOON</h2>
+
+                <p>
+                    Your digital album includes exclusive photocards,
+                    special pulls and collectible cards.
+                </p>
+
+                <a href="#" class="button">
+                    PURCHASE ALBUM
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        © KCA AWARDS · DIGITAL COLLECTION
+    </footer>
 
 </body>
 </html>
