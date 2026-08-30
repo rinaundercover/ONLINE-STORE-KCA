@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>I-DOLL — Digital Album Store</title>
+    <title>I-DOLL — Awards</title>
 
     <style>
         * {
@@ -23,6 +23,8 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
+        /* HEADER */
+
         header {
             width: 100%;
             padding: 28px 45px;
@@ -37,7 +39,7 @@
         }
 
         .logo {
-            font-size: 26px;
+            font-size: 27px;
             font-weight: 700;
             letter-spacing: -1.5px;
         }
@@ -50,67 +52,83 @@
         nav a {
             color: #000000;
             text-decoration: none;
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
 
         nav a:hover {
             text-decoration: underline;
         }
 
+        /* HERO */
+
         .hero {
-            padding: 100px 45px 80px;
+            min-height: 78vh;
+            padding: 80px 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             border-bottom: 1px solid #000000;
+        }
+
+        .hero-small {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
         }
 
         .hero h1 {
-            font-size: clamp(70px, 14vw, 180px);
-            line-height: 0.8;
-            letter-spacing: -8px;
+            font-size: clamp(90px, 17vw, 220px);
+            line-height: 0.78;
+            letter-spacing: -10px;
             font-weight: 700;
         }
 
-        .hero p {
-            margin-top: 40px;
+        .hero-description {
+            margin-top: 45px;
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            max-width: 500px;
+            line-height: 1.7;
         }
 
-        .store,
-        .collection {
-            padding: 70px 45px;
+        /* SECTIONS */
+
+        .section {
+            padding: 80px 45px;
+            border-bottom: 1px solid #000000;
         }
 
-        .collection {
-            border-top: 1px solid #000000;
-        }
-
-        .section-title {
+        .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 45px;
             border-bottom: 1px solid #000000;
             padding-bottom: 15px;
+            margin-bottom: 45px;
         }
 
-        .section-title h2 {
+        .section-header h2 {
             font-size: 18px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .section-title span {
-            font-size: 11px;
+        .section-header span {
+            font-size: 10px;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
+
+        /* ALBUMS */
 
         .albums {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 45px 30px;
+            gap: 35px 30px;
         }
 
         .album {
@@ -122,14 +140,14 @@
             aspect-ratio: 1 / 1;
             background: #eeeeee;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             margin-bottom: 18px;
-            overflow: hidden;
+            border: 1px solid #000000;
         }
 
         .album-cover span {
-            font-size: 12px;
+            font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
@@ -140,62 +158,144 @@
             align-items: flex-start;
         }
 
-        .album-name {
-            font-size: 15px;
+        .album-title {
+            font-size: 14px;
             font-weight: 700;
             text-transform: uppercase;
         }
 
-        .artist {
-            font-size: 12px;
+        .album-subtitle {
+            font-size: 11px;
             margin-top: 5px;
         }
 
-        .price {
-            font-size: 13px;
+        .free {
+            font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
         }
 
-        .album:hover .album-name {
+        .album:hover .album-title {
             text-decoration: underline;
         }
 
+        /* COLLECTION */
+
+        .collection-intro {
+            margin-bottom: 45px;
+            max-width: 600px;
+        }
+
+        .collection-intro p {
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .photocards {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .photocard {
+            cursor: pointer;
+        }
+
+        .photocard-image {
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            background: #eeeeee;
+            border: 1px solid #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .photocard-image span {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .photocard-info {
+            margin-top: 10px;
+        }
+
+        .member-name {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .card-number {
+            font-size: 9px;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* EMPTY COLLECTION */
+
+        .empty {
+            border: 1px solid #000000;
+            padding: 70px 30px;
+            text-align: center;
+        }
+
+        .empty h3 {
+            font-size: 20px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .empty p {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ABOUT */
+
         .about {
-            padding: 90px 45px;
-            border-top: 1px solid #000000;
+            padding: 100px 45px;
             border-bottom: 1px solid #000000;
         }
 
         .about h2 {
-            font-size: 50px;
-            letter-spacing: -3px;
-            margin-bottom: 30px;
+            font-size: clamp(45px, 7vw, 90px);
+            line-height: 0.9;
+            letter-spacing: -5px;
+            margin-bottom: 40px;
         }
 
         .about p {
             max-width: 650px;
-            font-size: 16px;
-            line-height: 1.6;
+            font-size: 15px;
+            line-height: 1.7;
         }
+
+        /* FOOTER */
 
         footer {
             padding: 30px 45px;
             display: flex;
             justify-content: space-between;
-            font-size: 10px;
+            font-size: 9px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        @media (max-width: 700px) {
+        /* MOBILE */
+
+        @media (max-width: 800px) {
 
             header {
                 padding: 25px;
             }
 
             nav {
-                gap: 12px;
+                gap: 15px;
             }
 
             nav a {
@@ -203,16 +303,15 @@
             }
 
             .hero {
-                padding: 80px 25px 60px;
+                padding: 70px 25px;
             }
 
             .hero h1 {
-                letter-spacing: -5px;
+                letter-spacing: -6px;
             }
 
-            .store,
-            .collection {
-                padding: 55px 25px;
+            .section {
+                padding: 60px 25px;
             }
 
             .albums {
@@ -220,12 +319,12 @@
                 gap: 45px;
             }
 
-            .about {
-                padding: 65px 25px;
+            .photocards {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .about h2 {
-                font-size: 38px;
+            .about {
+                padding: 70px 25px;
             }
 
             footer {
@@ -236,6 +335,8 @@
 </head>
 
 <body>
+
+    <!-- HEADER -->
 
     <header>
 
@@ -250,28 +351,34 @@
     </header>
 
 
+    <!-- HERO -->
+
     <main>
 
-        <!-- HOME / STORE -->
+        <section class="hero">
 
-        <section class="hero" id="store">
+            <div class="hero-small">
+                The I-DOLL Awards
+            </div>
 
             <h1>I-DOLL</h1>
 
-            <p>Digital albums. Made to be yours.</p>
+            <div class="hero-description">
+                The digital award show where every star has a story.
+            </div>
 
         </section>
 
 
-        <!-- LATEST RELEASES -->
+        <!-- ALBUM STORE -->
 
-        <section class="store">
+        <section class="section" id="store">
 
-            <div class="section-title">
+            <div class="section-header">
 
-                <h2>Latest Releases</h2>
+                <h2>Album Store</h2>
 
-                <span>All Albums Free</span>
+                <span>All Albums — FREE</span>
 
             </div>
 
@@ -287,11 +394,18 @@
                     <div class="album-info">
 
                         <div>
-                            <div class="album-name">Album Name</div>
-                            <div class="artist">Artist Name</div>
+                            <div class="album-title">
+                                I-DOLL 2026
+                            </div>
+
+                            <div class="album-subtitle">
+                                Official Awards Album
+                            </div>
                         </div>
 
-                        <div class="price">FREE</div>
+                        <div class="free">
+                            FREE
+                        </div>
 
                     </div>
 
@@ -307,11 +421,18 @@
                     <div class="album-info">
 
                         <div>
-                            <div class="album-name">Album Name</div>
-                            <div class="artist">Artist Name</div>
+                            <div class="album-title">
+                                NOMINEES
+                            </div>
+
+                            <div class="album-subtitle">
+                                Nominee Collection
+                            </div>
                         </div>
 
-                        <div class="price">FREE</div>
+                        <div class="free">
+                            FREE
+                        </div>
 
                     </div>
 
@@ -327,11 +448,18 @@
                     <div class="album-info">
 
                         <div>
-                            <div class="album-name">Album Name</div>
-                            <div class="artist">Artist Name</div>
+                            <div class="album-title">
+                                ALL STARS
+                            </div>
+
+                            <div class="album-subtitle">
+                                Special Edition
+                            </div>
                         </div>
 
-                        <div class="price">FREE</div>
+                        <div class="free">
+                            FREE
+                        </div>
 
                     </div>
 
@@ -344,133 +472,131 @@
 
         <!-- COLLECTION -->
 
-        <section class="collection" id="collection">
+        <section class="section" id="collection">
 
-            <div class="section-title">
+            <div class="section-header">
 
-                <h2>Collection</h2>
+                <h2>My Collection</h2>
 
-                <span>All Releases</span>
+                <span>Photocards</span>
 
             </div>
 
 
-            <div class="albums">
+            <div class="collection-intro">
 
-                <div class="album">
+                <p>
+                    Collect photocards of the I-DOLL members by opening
+                    digital albums. Every album contains collectible cards
+                    that can be added to your personal collection.
+                </p>
 
-                    <div class="album-cover">
-                        <span>Album Cover</span>
+            </div>
+
+
+            <!-- EXAMPLE CARDS -->
+
+            <div class="photocards">
+
+                <div class="photocard">
+
+                    <div class="photocard-image">
+                        <span>Photocard</span>
                     </div>
 
-                    <div class="album-info">
+                    <div class="photocard-info">
 
-                        <div>
-                            <div class="album-name">Album One</div>
-                            <div class="artist">Artist Name</div>
+                        <div class="member-name">
+                            Member Name
                         </div>
 
-                        <div class="price">FREE</div>
+                        <div class="card-number">
+                            I-DOLL 001
+                        </div>
 
                     </div>
 
                 </div>
 
 
-                <div class="album">
+                <div class="photocard">
 
-                    <div class="album-cover">
-                        <span>Album Cover</span>
+                    <div class="photocard-image">
+                        <span>Photocard</span>
                     </div>
 
-                    <div class="album-info">
+                    <div class="photocard-info">
 
-                        <div>
-                            <div class="album-name">Album Two</div>
-                            <div class="artist">Artist Name</div>
+                        <div class="member-name">
+                            Member Name
                         </div>
 
-                        <div class="price">FREE</div>
+                        <div class="card-number">
+                            I-DOLL 002
+                        </div>
 
                     </div>
 
                 </div>
 
 
-                <div class="album">
+                <div class="photocard">
 
-                    <div class="album-cover">
-                        <span>Album Cover</span>
+                    <div class="photocard-image">
+                        <span>Photocard</span>
                     </div>
 
-                    <div class="album-info">
+                    <div class="photocard-info">
 
-                        <div>
-                            <div class="album-name">Album Three</div>
-                            <div class="artist">Artist Name</div>
+                        <div class="member-name">
+                            Member Name
                         </div>
 
-                        <div class="price">FREE</div>
+                        <div class="card-number">
+                            I-DOLL 003
+                        </div>
 
                     </div>
 
                 </div>
 
 
-                <div class="album">
+                <div class="photocard">
 
-                    <div class="album-cover">
-                        <span>Album Cover</span>
+                    <div class="photocard-image">
+                        <span>Photocard</span>
                     </div>
 
-                    <div class="album-info">
+                    <div class="photocard-info">
 
-                        <div>
-                            <div class="album-name">Album Four</div>
-                            <div class="artist">Artist Name</div>
+                        <div class="member-name">
+                            Member Name
                         </div>
 
-                        <div class="price">FREE</div>
+                        <div class="card-number">
+                            I-DOLL 004
+                        </div>
 
                     </div>
 
                 </div>
 
 
-                <div class="album">
+                <div class="photocard">
 
-                    <div class="album-cover">
-                        <span>Album Cover</span>
+                    <div class="photocard-image">
+                        <span>Photocard</span>
                     </div>
 
-                    <div class="album-info">
+                    <div class="photocard-info">
 
-                        <div>
-                            <div class="album-name">Album Five</div>
-                            <div class="artist">Artist Name</div>
+                        <div class="member-name">
+                            Member Name
                         </div>
 
-                        <div class="price">FREE</div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="album">
-
-                    <div class="album-cover">
-                        <span>Album Cover</span>
-                    </div>
-
-                    <div class="album-info">
-
-                        <div>
-                            <div class="album-name">Album Six</div>
-                            <div class="artist">Artist Name</div>
+                        <div class="card-number">
+                            I-DOLL 005
                         </div>
-
-                        <div class="price">FREE</div>
 
                     </div>
 
@@ -485,12 +611,17 @@
 
         <section class="about" id="about">
 
-            <h2>YOUR MUSIC.<br>YOUR COLLECTION.</h2>
+            <h2>
+                THE AWARDS.<br>
+                THE ALBUMS.<br>
+                YOUR COLLECTION.
+            </h2>
 
             <p>
-                I-DOLL is a digital album store created for discovering,
-                collecting and owning music digitally. Every album is free
-                to download.
+                I-DOLL is a fictional digital award show celebrating
+                the members, artists and personalities of its universe.
+                Collect digital albums, discover new releases and build
+                your own I-DOLL photocard collection.
             </p>
 
         </section>
@@ -498,11 +629,17 @@
     </main>
 
 
+    <!-- FOOTER -->
+
     <footer>
 
-        <span>I-DOLL © 2026</span>
+        <span>
+            I-DOLL AWARDS © 2026
+        </span>
 
-        <span>Digital Music Store</span>
+        <span>
+            DIGITAL • COLLECT • CELEBRATE
+        </span>
 
     </footer>
 
