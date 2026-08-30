@@ -13,6 +13,10 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background: #ffffff;
             color: #000000;
@@ -26,6 +30,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            background: #ffffff;
+            z-index: 100;
         }
 
         .logo {
@@ -70,8 +78,13 @@
             letter-spacing: 2px;
         }
 
-        .store {
+        .store,
+        .collection {
             padding: 70px 45px;
+        }
+
+        .collection {
+            border-top: 1px solid #000000;
         }
 
         .section-title {
@@ -97,7 +110,7 @@
         .albums {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 45px 30px;
         }
 
         .album {
@@ -197,7 +210,8 @@
                 letter-spacing: -5px;
             }
 
-            .store {
+            .store,
+            .collection {
                 padding: 55px 25px;
             }
 
@@ -224,83 +238,250 @@
 <body>
 
     <header>
+
         <div class="logo">I-DOLL</div>
 
         <nav>
             <a href="#store">Store</a>
+            <a href="#collection">Collection</a>
             <a href="#about">About</a>
         </nav>
+
     </header>
 
 
     <main>
 
-        <section class="hero">
+        <!-- HOME / STORE -->
+
+        <section class="hero" id="store">
+
             <h1>I-DOLL</h1>
+
             <p>Digital albums. Made to be yours.</p>
+
         </section>
 
 
-        <section class="store" id="store">
+        <!-- LATEST RELEASES -->
+
+        <section class="store">
 
             <div class="section-title">
+
                 <h2>Latest Releases</h2>
+
                 <span>All Albums Free</span>
+
             </div>
+
 
             <div class="albums">
 
                 <div class="album">
+
                     <div class="album-cover">
                         <span>Album Cover</span>
                     </div>
 
                     <div class="album-info">
+
                         <div>
                             <div class="album-name">Album Name</div>
                             <div class="artist">Artist Name</div>
                         </div>
 
                         <div class="price">FREE</div>
+
                     </div>
+
                 </div>
 
 
                 <div class="album">
+
                     <div class="album-cover">
                         <span>Album Cover</span>
                     </div>
 
                     <div class="album-info">
+
                         <div>
                             <div class="album-name">Album Name</div>
                             <div class="artist">Artist Name</div>
                         </div>
 
                         <div class="price">FREE</div>
+
                     </div>
+
                 </div>
 
 
                 <div class="album">
+
                     <div class="album-cover">
                         <span>Album Cover</span>
                     </div>
 
                     <div class="album-info">
+
                         <div>
                             <div class="album-name">Album Name</div>
                             <div class="artist">Artist Name</div>
                         </div>
 
                         <div class="price">FREE</div>
+
                     </div>
+
                 </div>
 
             </div>
 
         </section>
 
+
+        <!-- COLLECTION -->
+
+        <section class="collection" id="collection">
+
+            <div class="section-title">
+
+                <h2>Collection</h2>
+
+                <span>All Releases</span>
+
+            </div>
+
+
+            <div class="albums">
+
+                <div class="album">
+
+                    <div class="album-cover">
+                        <span>Album Cover</span>
+                    </div>
+
+                    <div class="album-info">
+
+                        <div>
+                            <div class="album-name">Album One</div>
+                            <div class="artist">Artist Name</div>
+                        </div>
+
+                        <div class="price">FREE</div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="album">
+
+                    <div class="album-cover">
+                        <span>Album Cover</span>
+                    </div>
+
+                    <div class="album-info">
+
+                        <div>
+                            <div class="album-name">Album Two</div>
+                            <div class="artist">Artist Name</div>
+                        </div>
+
+                        <div class="price">FREE</div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="album">
+
+                    <div class="album-cover">
+                        <span>Album Cover</span>
+                    </div>
+
+                    <div class="album-info">
+
+                        <div>
+                            <div class="album-name">Album Three</div>
+                            <div class="artist">Artist Name</div>
+                        </div>
+
+                        <div class="price">FREE</div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="album">
+
+                    <div class="album-cover">
+                        <span>Album Cover</span>
+                    </div>
+
+                    <div class="album-info">
+
+                        <div>
+                            <div class="album-name">Album Four</div>
+                            <div class="artist">Artist Name</div>
+                        </div>
+
+                        <div class="price">FREE</div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="album">
+
+                    <div class="album-cover">
+                        <span>Album Cover</span>
+                    </div>
+
+                    <div class="album-info">
+
+                        <div>
+                            <div class="album-name">Album Five</div>
+                            <div class="artist">Artist Name</div>
+                        </div>
+
+                        <div class="price">FREE</div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="album">
+
+                    <div class="album-cover">
+                        <span>Album Cover</span>
+                    </div>
+
+                    <div class="album-info">
+
+                        <div>
+                            <div class="album-name">Album Six</div>
+                            <div class="artist">Artist Name</div>
+                        </div>
+
+                        <div class="price">FREE</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
 
         <section class="about" id="about">
 
@@ -318,8 +499,11 @@
 
 
     <footer>
+
         <span>I-DOLL © 2026</span>
+
         <span>Digital Music Store</span>
+
     </footer>
 
 </body>
