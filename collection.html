@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>I-DOLL — Collection</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: white;
+            color: black;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        /* NAVIGATION */
+
+        nav {
+            height: 80px;
+            padding: 0 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: black;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* COLLECTION */
+
+        .collection {
+            max-width: 1100px;
+            margin: auto;
+
+            padding: 80px 40px;
+        }
+
+        .collection-header {
+            margin-bottom: 60px;
+        }
+
+        .collection-header h1 {
+            font-size: 55px;
+            font-weight: 700;
+            letter-spacing: -2px;
+
+            margin-bottom: 15px;
+        }
+
+        .collection-header p {
+            font-size: 14px;
+            color: #666666;
+        }
+
+
+        /* COLLECTION STATS */
+
+        .stats {
+            border-top: 1px solid #dddddd;
+            border-bottom: 1px solid #dddddd;
+
+            padding: 20px 0;
+
+            margin-bottom: 60px;
+
+            display: flex;
+            justify-content: space-between;
+
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+
+        /* ALBUM */
+
+        .album-section {
+            margin-bottom: 80px;
+        }
+
+        .album-title {
+            font-size: 20px;
+            font-weight: 600;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* CARDS */
+
+        .cards {
+            display: grid;
+
+            grid-template-columns: repeat(5, 1fr);
+
+            gap: 18px;
+        }
+
+        .card {
+            aspect-ratio: 2 / 3;
+
+            background: #f2f2f2;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            color: #999999;
+
+            font-size: 22px;
+
+            border: 1px solid #e5e5e5;
+        }
+
+
+        /* CARD NUMBER */
+
+        .card-number {
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 10px;
+            }
+
+            .collection {
+                padding: 50px 20px;
+            }
+
+            .collection-header h1 {
+                font-size: 42px;
+            }
+
+            .cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 450px) {
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            I-DOLL
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                HOME
+            </a>
+
+            <a href="store.html">
+                STORE
+            </a>
+
+            <a href="collection.html">
+                COLLECTION
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- COLLECTION -->
+
+    <main class="collection">
+
+
+        <div class="collection-header">
+
+            <h1>
+                COLLECTION
+            </h1>
+
+            <p>
+                Your personal I-DOLL collection.
+            </p>
+
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="stats">
+
+            <span>
+                CARDS COLLECTED
+            </span>
+
+            <span>
+                0 / 10
+            </span>
+
+        </div>
+
+
+        <!-- ALBUM COLLECTION -->
+
+        <section class="album-section">
+
+            <div class="album-title">
+                FIRST COLLECTION
+            </div>
+
+
+            <div class="cards">
+
+
+                <div class="card">
+                    <span class="card-number">01</span>
+                </div>
+
+                <div class="card">
+                    <span class="card-number">02</span>
+                </div>
+
+                <div class="card">
+                    <span class="card-number">03</span>
+                </div>
+
+                <div class="card">
+                    <span class="card-number">04</span>
+                </div>
+
+                <div class="card">
+                    <span class="card-number">05</span>
+                </div>
+
+                <div class="card">
+                    <span class="card-number">06</span>
+                </div>
+
+                <div class="card">
+                    <span class="card-number">07</span>
+                </div>
+
+                <div class="card">
+                    <span class="card-number">08</span>
+                </div>
+
+                <div class="card">
+                    <span class="card-number">09</span>
+                </div>
+
+                <div class="card">
+                    <span class="card-number">10</span>
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+</body>
+
+</html>
