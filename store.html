@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>I-DOLL — Store</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: white;
+            color: black;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        /* NAVIGATION */
+
+        nav {
+            height: 80px;
+            padding: 0 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: black;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* STORE */
+
+        .store {
+            max-width: 1100px;
+            margin: auto;
+
+            padding: 80px 40px;
+        }
+
+        .store-header {
+            margin-bottom: 60px;
+        }
+
+        .store-header h1 {
+            font-size: 55px;
+            font-weight: 700;
+            letter-spacing: -2px;
+
+            margin-bottom: 15px;
+        }
+
+        .store-header p {
+            font-size: 14px;
+            color: #666666;
+        }
+
+
+        /* ALBUM GRID */
+
+        .albums {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 35px;
+        }
+
+
+        /* ALBUM */
+
+        .album-cover {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+
+            background: #eeeeee;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 2px;
+
+            margin-bottom: 18px;
+        }
+
+        .album-name {
+            font-size: 16px;
+            font-weight: 600;
+
+            margin-bottom: 7px;
+        }
+
+        .album-details {
+            font-size: 12px;
+            color: #777777;
+
+            margin-bottom: 15px;
+        }
+
+        .free {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+
+            margin-bottom: 15px;
+        }
+
+
+        /* PURCHASE BUTTON */
+
+        .purchase {
+            display: inline-block;
+
+            padding: 11px 20px;
+
+            background: black;
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .purchase:hover {
+            background: #333333;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 10px;
+            }
+
+            .store {
+                padding: 50px 20px;
+            }
+
+            .store-header h1 {
+                font-size: 42px;
+            }
+
+            .albums {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .albums {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            I-DOLL
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                HOME
+            </a>
+
+            <a href="store.html">
+                STORE
+            </a>
+
+            <a href="collection.html">
+                COLLECTION
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- STORE -->
+
+    <main class="store">
+
+        <div class="store-header">
+
+            <h1>
+                STORE
+            </h1>
+
+            <p>
+                Explore the I-DOLL digital album collection.
+            </p>
+
+        </div>
+
+
+        <section class="albums">
+
+
+            <!-- ALBUM 01 -->
+
+            <div class="album">
+
+                <div class="album-cover">
+                    I-DOLL 01
+                </div>
+
+                <div class="album-name">
+                    FIRST COLLECTION
+                </div>
+
+                <div class="album-details">
+                    Digital Album · 5 Members · 10 Cards
+                </div>
+
+                <div class="free">
+                    FREE
+                </div>
+
+                <a href="#" class="purchase">
+                    PURCHASE
+                </a>
+
+            </div>
+
+
+            <!-- ALBUM 02 -->
+
+            <div class="album">
+
+                <div class="album-cover">
+                    I-DOLL 02
+                </div>
+
+                <div class="album-name">
+                    COMING SOON
+                </div>
+
+                <div class="album-details">
+                    Digital Album
+                </div>
+
+                <div class="free">
+                    FREE
+                </div>
+
+                <a href="#" class="purchase">
+                    COMING SOON
+                </a>
+
+            </div>
+
+
+            <!-- ALBUM 03 -->
+
+            <div class="album">
+
+                <div class="album-cover">
+                    I-DOLL 03
+                </div>
+
+                <div class="album-name">
+                    COMING SOON
+                </div>
+
+                <div class="album-details">
+                    Digital Album
+                </div>
+
+                <div class="free">
+                    FREE
+                </div>
+
+                <a href="#" class="purchase">
+                    COMING SOON
+                </a>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+</body>
+
+</html>
