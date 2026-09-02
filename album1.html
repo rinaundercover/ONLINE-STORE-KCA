@@ -81,9 +81,28 @@
 
     <script>
         function openAlbum() {
-            alert("Your album is opening...");
-        }
-    </script>
+        const cards = [
+            "IMG_6687.PNG",
+            "IMG_6688.PNG",
+            "IMG_6689.PNG",
+            "IMG_6690.PNG",
+            "IMG_6691.PNG",
+            "IMG_6692.PNG",
+            "IMG_6693.PNG",
+            "IMG_6694.PNG",
+            "IMG_6695.PNG",
+            "IMG_6696.PNG",
+            "IMG_6697.PNG",
+            "IMG_6698.PNG",
+            "IMG_6699.PNG",
+            "IMG_6700.PNG",
+            "card15.png"
+        ];
 
+        const randomCard = cards[Math.floor(Math.random() * cards.length)];
+
+        window.location.href = "pull.html?card=" + randomCard;
+    }
+</script>
 </body>
 </html>
