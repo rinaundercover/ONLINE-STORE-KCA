@@ -1,1 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>I-DOLL — Open Album</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: white;
+            color: black;
+            text-align: center;
+        }
+
+        nav {
+            padding: 25px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        nav a {
+            color: black;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .album {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 30px;
+        }
+
+        h1 {
+            font-size: 35px;
+            letter-spacing: 3px;
+        }
+
+        p {
+            color: #555;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 15px 35px;
+            background: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="store.html">STORE</a>
+        <a href="collection.html">COLLECTION</a>
+    </nav>
+
+    <div class="album">
+
+        <h1>PHANTOM OF THE SPADE</h1>
+
+        <p>Your album is ready to open.</p>
+
+        <button onclick="openAlbum()">OPEN ALBUM</button>
+
+    </div>
+
+    <script>
+        function openAlbum() {
+            alert("Your album is opening...");
+        }
+    </script>
+
+</body>
+</html>
