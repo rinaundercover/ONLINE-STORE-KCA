@@ -778,17 +778,56 @@ openButton.addEventListener("click", function() {
 
     }, 8000);
 
+/* SAVE PULL TO COLLECTION */
+
+setTimeout(function() {
+
+    let collection = JSON.parse(
+        localStorage.getItem("idollCollection")
+    ) || {};
+
+    /* SAVE CARD 1 */
+
+    if (collection[pull.card1.file]) {
+
+        collection[pull.card1.file]++;
+
+    } else {
+
+        collection[pull.card1.file] = 1;
+
+    }
+
+
+    /* SAVE CARD 2 */
+
+    if (collection[pull.card2.file]) {
+
+        collection[pull.card2.file]++;
+
+    } else {
+
+        collection[pull.card2.file] = 1;
+
+    }
+
+
+    /* SAVE COLLECTION */
+
+    localStorage.setItem(
+        "idollCollection",
+        JSON.stringify(collection)
+    );
+
 
     /* FINISH */
 
-    setTimeout(function() {
+    status.textContent = "";
 
-        status.textContent = "";
+    complete.classList.add("show");
 
-        complete.classList.add("show");
-
-    }, 8800);
-
+}, 8800);
+   
 });
 
 </script>
