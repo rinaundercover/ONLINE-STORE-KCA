@@ -1,142 +1,788 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>I-DOLL — Your Pull</title>
+<title>I-DOLL — Your Pull</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: white;
-            color: black;
-            text-align: center;
-        }
+<style>
 
-        nav {
-            padding: 25px;
-            border-bottom: 1px solid #ddd;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        nav a {
-            color: black;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 13px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: white;
+    color: black;
+    text-align: center;
+}
 
-        .result {
-            max-width: 800px;
-            margin: 70px auto;
-            padding: 20px;
-        }
+/* NAVIGATION */
 
-        h1 {
-            font-size: 32px;
-            letter-spacing: 3px;
-        }
+nav {
+    padding: 25px;
+    border-bottom: 1px solid #ddd;
+}
 
-        .cards {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin: 40px auto;
-        }
+nav a {
+    color: black;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
 
-        .card {
-            width: 250px;
-            height: 350px;
-            object-fit: cover;
-            display: block;
-        }
+/* MAIN */
 
-        button {
-            padding: 14px 30px;
-            background: black;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
+.container {
+    max-width: 1000px;
+    margin: 70px auto;
+    padding: 20px;
+}
 
-        button:hover {
-            opacity: 0.8;
-        }
+h1 {
+    font-size: 34px;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+}
 
-        @media (max-width: 600px) {
-            .cards {
-                flex-direction: column;
-                align-items: center;
-            }
+.subtitle {
+    letter-spacing: 2px;
+    font-size: 13px;
+}
 
-            .card {
-                width: 250px;
-                height: 350px;
-            }
-        }
-    </style>
+/* OPEN BUTTON */
+
+#openButton {
+    margin-top: 45px;
+    padding: 16px 40px;
+    background: black;
+    color: white;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+#openButton:hover {
+    transform: scale(1.04);
+    opacity: 0.8;
+}
+
+#openButton:disabled {
+    cursor: default;
+}
+
+/* STATUS */
+
+#status {
+    margin-top: 35px;
+    min-height: 25px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+/* CARDS */
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+    margin-top: 40px;
+    perspective: 1200px;
+}
+
+/* CARD */
+
+.card-wrapper {
+    width: 250px;
+    height: 350px;
+    perspective: 1200px;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.card-wrapper.show {
+    animation: cardAppear 0.7s forwards;
+}
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(.2,.7,.2,1);
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-side {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* CARD BACK */
+
+.card-back {
+    background: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+.card-back-inner {
+    width: 85%;
+    height: 90%;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.card-back-inner .logo {
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+.card-back-inner .number {
+    margin-top: 20px;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+/* CARD FRONT */
+
+.card-front {
+    transform: rotateY(180deg);
+    background: white;
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* RARITY */
+
+.rarity {
+    margin-top: 18px;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    opacity: 0;
+}
+
+.rarity.show {
+    animation: rarityAppear 0.5s forwards;
+}
+
+@keyframes rarityAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* RARITY DIFFERENCES */
+
+.common {
+    letter-spacing: 3px;
+}
+
+.rare {
+    letter-spacing: 4px;
+}
+
+.legendary {
+    letter-spacing: 5px;
+    animation: legendaryGlow 1.2s infinite alternate;
+}
+
+@keyframes legendaryGlow {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.08);
+    }
+
+}
+
+/* SHUFFLE */
+
+.shuffle {
+    animation: shuffle 0.35s infinite alternate;
+}
+
+@keyframes shuffle {
+
+    from {
+        transform: translateX(-8px) rotate(-2deg);
+    }
+
+    to {
+        transform: translateX(8px) rotate(2deg);
+    }
+
+}
+
+/* COMPLETE */
+
+#complete {
+    display: none;
+    margin-top: 55px;
+}
+
+#complete.show {
+    display: block;
+    animation: completeAppear 0.8s forwards;
+}
+
+@keyframes completeAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+#complete h2 {
+    font-size: 20px;
+    letter-spacing: 4px;
+}
+
+.collection-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 30px;
+    background: black;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 35px;
+    }
+
+    .card-wrapper {
+        width: 230px;
+        height: 322px;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    nav a {
+        margin: 0 7px;
+        font-size: 11px;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
-    <nav>
-        <a href="index.html">HOME</a>
-        <a href="store.html">STORE</a>
-        <a href="collection.html">COLLECTION</a>
-    </nav>
+<nav>
 
-    <div class="result">
+<a href="index.html">HOME</a>
+<a href="store.html">STORE</a>
+<a href="collection.html">COLLECTION</a>
 
-        <h1>YOUR PULL</h1>
+</nav>
 
-        <p>PHANTOM OF THE SPADE</p>
 
-        <div class="cards">
-            <img id="card1" class="card" src="" alt="Your first photocard">
-            <img id="card2" class="card" src="" alt="Your second photocard">
+<div class="container">
+
+<h1>PHANTOM OF THE SPADE</h1>
+
+<p class="subtitle">
+YOUR DIGITAL ALBUM PULL
+</p>
+
+
+<button id="openButton">
+OPEN ALBUM
+</button>
+
+
+<div id="status"></div>
+
+
+<div class="cards">
+
+    <div class="card-wrapper" id="wrapper1">
+
+        <div class="card" id="card1">
+
+            <div class="card-side card-back">
+
+                <div class="card-back-inner">
+
+                    <div class="logo">
+                        I-DOLL
+                    </div>
+
+                    <div class="number">
+                        PHANTOM OF THE SPADE
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card-side card-front">
+
+                <img id="image1" src="" alt="First photocard">
+
+            </div>
+
         </div>
 
-        <a href="collection.html">
-            <button>COLLECTION</button>
-        </a>
+        <div class="rarity" id="rarity1"></div>
 
     </div>
 
-    <script>
 
-        const cards = [
-           "IMG_6687.PNG",
-            "IMG_6688.PNG",
-            "IMG_6689.PNG",
-            "IMG_6690.PNG",
-            "IMG_6691.PNG",
-            "IMG_6692.PNG",
-            "IMG_6693.PNG",
-            "IMG_6694.PNG",
-            "IMG_6695.PNG",
-            "IMG_6696.PNG",
-            "IMG_6697.PNG",
-            "IMG_6698.PNG",
-            "IMG_6699.PNG",
-            "IMG_6700.PNG",
-            "soyeon.PNG"
-        ];
+    <div class="card-wrapper" id="wrapper2">
 
-        const firstCard =
-            cards[Math.floor(Math.random() * cards.length)];
+        <div class="card" id="card2">
 
-        const secondCard =
-            cards[Math.floor(Math.random() * cards.length)];
+            <div class="card-side card-back">
 
-        document.getElementById("card1").src = firstCard;
-        document.getElementById("card2").src = secondCard;
+                <div class="card-back-inner">
 
-    </script>
+                    <div class="logo">
+                        I-DOLL
+                    </div>
+
+                    <div class="number">
+                        PHANTOM OF THE SPADE
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card-side card-front">
+
+                <img id="image2" src="" alt="Second photocard">
+
+            </div>
+
+        </div>
+
+        <div class="rarity" id="rarity2"></div>
+
+    </div>
+
+</div>
+
+
+<div id="complete">
+
+    <h2>PULL COMPLETE</h2>
+
+    <a class="collection-button" href="collection.html">
+        VIEW COLLECTION
+    </a>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+/* =========================================
+   YOUR 15 PHOTOCARDS
+========================================= */
+
+const cards = [
+
+    {
+        file: "IMG_6687.PNG",
+        rarity: "COMMON"
+    },
+
+    {
+        file: "IMG_6688.PNG",
+        rarity: "LEGENDARY"
+    },
+
+    {
+        file: "IMG_6689.PNG",
+        rarity: "RARE"
+    },
+
+    {
+        file: "IMG_6690.PNG",
+        rarity: "COMMON"
+    },
+
+    {
+        file: "IMG_6691.PNG",
+        rarity: "LEGENDARY"
+    },
+
+    {
+        file: "IMG_6692.PNG",
+        rarity: "RARE"
+    },
+
+    {
+        file: "IMG_6693.PNG",
+        rarity: "COMMON"
+    },
+
+    {
+        file: "IMG_6694.PNG",
+        rarity: "LEGENDARY"
+    },
+
+    {
+        file: "IMG_6695.PNG",
+        rarity: "RARE"
+    },
+
+    {
+        file: "IMG_6696.PNG",
+        rarity: "RARE"
+    },
+
+    {
+        file: "IMG_6697.PNG",
+        rarity: "LEGENDARY"
+    },
+
+    {
+        file: "IMG_6698.PNG",
+        rarity: "COMMON"
+    },
+
+    {
+        file: "IMG_6699.PNG",
+        rarity: "RARE"
+    },
+
+    {
+        file: "IMG_6700.PNG",
+        rarity: "LEGENDARY"
+    },
+
+    {
+        file: "soyeon.png",
+        rarity: "COMMON"
+    }
+
+];
+
+
+/* =========================================
+   RANDOM RARITY
+   COMMON = 60%
+   RARE = 30%
+   LEGENDARY = 10%
+========================================= */
+
+function getRandomRarity() {
+
+    const number = Math.random();
+
+    if (number < 0.60) {
+
+        return "COMMON";
+
+    } else if (number < 0.90) {
+
+        return "RARE";
+
+    } else {
+
+        return "LEGENDARY";
+
+    }
+
+}
+
+
+/* =========================================
+   GET RANDOM CARD FROM RARITY
+========================================= */
+
+function getRandomCard(rarity) {
+
+    const matchingCards = cards.filter(
+        card => card.rarity === rarity
+    );
+
+    return matchingCards[
+        Math.floor(Math.random() * matchingCards.length)
+    ];
+
+}
+
+
+/* =========================================
+   CREATE TWO RANDOM PULLS
+========================================= */
+
+function createPull() {
+
+    const rarity1 = getRandomRarity();
+
+    const rarity2 = getRandomRarity();
+
+    const card1 = getRandomCard(rarity1);
+
+    const card2 = getRandomCard(rarity2);
+
+    return {
+
+        card1,
+        card2
+
+    };
+
+}
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const openButton = document.getElementById("openButton");
+
+const status = document.getElementById("status");
+
+const wrapper1 = document.getElementById("wrapper1");
+
+const wrapper2 = document.getElementById("wrapper2");
+
+const cardElement1 = document.getElementById("card1");
+
+const cardElement2 = document.getElementById("card2");
+
+const image1 = document.getElementById("image1");
+
+const image2 = document.getElementById("image2");
+
+const rarity1 = document.getElementById("rarity1");
+
+const rarity2 = document.getElementById("rarity2");
+
+const complete = document.getElementById("complete");
+
+
+/* =========================================
+   OPEN ALBUM
+========================================= */
+
+openButton.addEventListener("click", function() {
+
+    openButton.disabled = true;
+
+    openButton.style.display = "none";
+
+    status.textContent = "OPENING ALBUM...";
+
+    const pull = createPull();
+
+
+    /* PRELOAD IMAGES */
+
+    const preload1 = new Image();
+
+    const preload2 = new Image();
+
+    preload1.src = pull.card1.file;
+
+    preload2.src = pull.card2.file;
+
+
+    /* WAIT */
+
+    setTimeout(function() {
+
+        status.textContent = "3";
+
+    }, 800);
+
+
+    setTimeout(function() {
+
+        status.textContent = "2";
+
+    }, 1500);
+
+
+    setTimeout(function() {
+
+        status.textContent = "1";
+
+    }, 2200);
+
+
+    /* CARDS APPEAR */
+
+    setTimeout(function() {
+
+        status.textContent = "SHUFFLING...";
+
+        wrapper1.classList.add("show");
+
+        wrapper2.classList.add("show");
+
+        cardElement1.classList.add("shuffle");
+
+        cardElement2.classList.add("shuffle");
+
+    }, 2900);
+
+
+    /* STOP SHUFFLING */
+
+    setTimeout(function() {
+
+        cardElement1.classList.remove("shuffle");
+
+        cardElement2.classList.remove("shuffle");
+
+        status.textContent = "CARD 1";
+
+    }, 4400);
+
+
+    /* REVEAL CARD 1 */
+
+    setTimeout(function() {
+
+        image1.src = pull.card1.file;
+
+        cardElement1.classList.add("flipped");
+
+    }, 4800);
+
+
+    /* SHOW RARITY 1 */
+
+    setTimeout(function() {
+
+        rarity1.textContent = pull.card1.rarity;
+
+        rarity1.classList.add(
+            "show",
+            pull.card1.rarity.toLowerCase()
+        );
+
+    }, 5900);
+
+
+    /* CARD 2 */
+
+    setTimeout(function() {
+
+        status.textContent = "CARD 2";
+
+    }, 6500);
+
+
+    /* REVEAL CARD 2 */
+
+    setTimeout(function() {
+
+        image2.src = pull.card2.file;
+
+        cardElement2.classList.add("flipped");
+
+    }, 6900);
+
+
+    /* SHOW RARITY 2 */
+
+    setTimeout(function() {
+
+        rarity2.textContent = pull.card2.rarity;
+
+        rarity2.classList.add(
+            "show",
+            pull.card2.rarity.toLowerCase()
+        );
+
+    }, 8000);
+
+
+    /* FINISH */
+
+    setTimeout(function() {
+
+        status.textContent = "";
+
+        complete.classList.add("show");
+
+    }, 8800);
+
+});
+
+</script>
 
 </body>
 </html>
