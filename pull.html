@@ -589,11 +589,20 @@ function createPull() {
 
     const rarity1 = getRandomRarity();
 
-    const rarity2 = getRandomRarity();
-
     const card1 = getRandomCard(rarity1);
 
-    const card2 = getRandomCard(rarity2);
+    let rarity2 = getRandomRarity();
+
+    let card2 = getRandomCard(rarity2);
+
+    // Make sure the two cards are never the same
+    while (card2.file === card1.file) {
+
+        rarity2 = getRandomRarity();
+
+        card2 = getRandomCard(rarity2);
+
+    }
 
     return {
 
