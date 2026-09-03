@@ -21,7 +21,6 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
-
         /* NAVIGATION */
 
         nav {
@@ -57,13 +56,11 @@
             text-decoration: underline;
         }
 
-
         /* COLLECTION */
 
         .collection {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: auto;
-
             padding: 80px 40px;
         }
 
@@ -75,7 +72,6 @@
             font-size: 55px;
             font-weight: 700;
             letter-spacing: -2px;
-
             margin-bottom: 15px;
         }
 
@@ -83,7 +79,6 @@
             font-size: 14px;
             color: #666666;
         }
-
 
         /* COLLECTION STATS */
 
@@ -102,7 +97,6 @@
             letter-spacing: 1px;
         }
 
-
         /* ALBUM */
 
         .album-section {
@@ -112,10 +106,8 @@
         .album-title {
             font-size: 20px;
             font-weight: 600;
-
             margin-bottom: 25px;
         }
-
 
         /* CARDS */
 
@@ -128,30 +120,120 @@
         }
 
         .card {
+            position: relative;
+
             aspect-ratio: 2 / 3;
 
             background: #f2f2f2;
 
-            display: flex;
+            border: 1px solid #e5e5e5;
 
+            overflow: hidden;
+
+            display: flex;
             align-items: center;
             justify-content: center;
-
-            color: #999999;
-
-            font-size: 22px;
-
-            border: 1px solid #e5e5e5;
         }
 
+        /* LOCKED CARD */
 
-        /* CARD NUMBER */
+        .locked {
+            background: #f5f5f5;
+            color: #aaaaaa;
+        }
 
-        .card-number {
+        .locked .card-number {
             font-size: 11px;
             letter-spacing: 1px;
         }
 
+        .locked-text {
+            position: absolute;
+
+            bottom: 15px;
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+
+            color: #aaaaaa;
+        }
+
+        /* OWNED CARD */
+
+        .card img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            display: block;
+        }
+
+        /* CARD NUMBER */
+
+        .card-number {
+            position: absolute;
+
+            top: 10px;
+            left: 10px;
+
+            z-index: 2;
+
+            background: white;
+
+            padding: 5px 7px;
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+
+            border: 1px solid #dddddd;
+        }
+
+        /* DUPLICATE COUNT */
+
+        .duplicate-count {
+            position: absolute;
+
+            top: 10px;
+            right: 10px;
+
+            z-index: 3;
+
+            min-width: 28px;
+            height: 28px;
+
+            padding: 0 7px;
+
+            background: black;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            letter-spacing: 1px;
+        }
+
+        /* HIDDEN IMAGE */
+
+        .hidden-card {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .question {
+            font-size: 28px;
+            color: #cccccc;
+        }
 
         /* MOBILE */
 
@@ -182,7 +264,6 @@
             }
 
         }
-
 
         @media (max-width: 450px) {
 
@@ -253,65 +334,22 @@
                 CARDS COLLECTED
             </span>
 
-            <span>
-                0 / 10
+            <span id="collectionCount">
+                0 / 100
             </span>
 
         </div>
 
 
-        <!-- ALBUM COLLECTION -->
+        <!-- FIRST COLLECTION -->
 
         <section class="album-section">
 
             <div class="album-title">
-                FIRST COLLECTION
+                PHANTOM OF THE SPADE
             </div>
 
-
-            <div class="cards">
-
-
-                <div class="card">
-                    <span class="card-number">01</span>
-                </div>
-
-                <div class="card">
-                    <span class="card-number">02</span>
-                </div>
-
-                <div class="card">
-                    <span class="card-number">03</span>
-                </div>
-
-                <div class="card">
-                    <span class="card-number">04</span>
-                </div>
-
-                <div class="card">
-                    <span class="card-number">05</span>
-                </div>
-
-                <div class="card">
-                    <span class="card-number">06</span>
-                </div>
-
-                <div class="card">
-                    <span class="card-number">07</span>
-                </div>
-
-                <div class="card">
-                    <span class="card-number">08</span>
-                </div>
-
-                <div class="card">
-                    <span class="card-number">09</span>
-                </div>
-
-                <div class="card">
-                    <span class="card-number">10</span>
-                </div>
-
+            <div class="cards" id="cardGrid">
 
             </div>
 
@@ -319,6 +357,237 @@
 
 
     </main>
+
+
+    <script>
+
+        /* =========================================
+           ALL 100 COLLECTION SLOTS
+        ========================================= */
+
+        const cards = [
+
+            {
+                slot: "001",
+                file: "IMG_6687.PNG"
+            },
+
+            {
+                slot: "002",
+                file: "IMG_6688.PNG"
+            },
+
+            {
+                slot: "003",
+                file: "IMG_6689.PNG"
+            },
+
+            {
+                slot: "004",
+                file: "IMG_6690.PNG"
+            },
+
+            {
+                slot: "005",
+                file: "IMG_6691.PNG"
+            },
+
+            {
+                slot: "006",
+                file: "IMG_6692.PNG"
+            },
+
+            {
+                slot: "007",
+                file: "IMG_6693.PNG"
+            },
+
+            {
+                slot: "008",
+                file: "IMG_6694.PNG"
+            },
+
+            {
+                slot: "009",
+                file: "IMG_6695.PNG"
+            },
+
+            {
+                slot: "010",
+                file: "IMG_6696.PNG"
+            },
+
+            {
+                slot: "011",
+                file: "IMG_6697.PNG"
+            },
+
+            {
+                slot: "012",
+                file: "IMG_6698.PNG"
+            },
+
+            {
+                slot: "013",
+                file: "IMG_6699.PNG"
+            },
+
+            {
+                slot: "014",
+                file: "IMG_6700.PNG"
+            },
+
+            {
+                slot: "015",
+                file: "soyeon.png"
+            }
+
+        ];
+
+
+        /* =========================================
+           LOAD SAVED COLLECTION
+        ========================================= */
+
+        let collection = JSON.parse(
+            localStorage.getItem("idollCollection")
+        ) || {};
+
+
+        /* =========================================
+           CREATE 100 SLOTS
+        ========================================= */
+
+        const grid = document.getElementById("cardGrid");
+
+        for (let i = 1; i <= 100; i++) {
+
+            const slotNumber = String(i).padStart(3, "0");
+
+            const card = cards.find(
+                card => card.slot === slotNumber
+            );
+
+            const cardElement = document.createElement("div");
+
+            cardElement.className = "card";
+
+
+            /* OWNED CARD */
+
+            if (card && collection[card.file]) {
+
+                const image = document.createElement("img");
+
+                image.src = card.file;
+
+                image.alt = "I-DOLL photocard " + slotNumber;
+
+                cardElement.appendChild(image);
+
+
+                /* CARD NUMBER */
+
+                const number = document.createElement("div");
+
+                number.className = "card-number";
+
+                number.textContent = slotNumber;
+
+                cardElement.appendChild(number);
+
+
+                /* DUPLICATE COUNT */
+
+                const count = collection[card.file];
+
+                if (count > 1) {
+
+                    const duplicate = document.createElement("div");
+
+                    duplicate.className = "duplicate-count";
+
+                    duplicate.textContent = "×" + count;
+
+                    cardElement.appendChild(duplicate);
+
+                }
+
+            }
+
+
+            /* UNOWNED CARD */
+
+            else {
+
+                cardElement.classList.add("locked");
+
+
+                const number = document.createElement("div");
+
+                number.className = "card-number";
+
+                number.textContent = slotNumber;
+
+                cardElement.appendChild(number);
+
+
+                const hidden = document.createElement("div");
+
+                hidden.className = "hidden-card";
+
+
+                const question = document.createElement("div");
+
+                question.className = "question";
+
+                question.textContent = "?";
+
+                hidden.appendChild(question);
+
+
+                cardElement.appendChild(hidden);
+
+
+                const lockedText = document.createElement("div");
+
+                lockedText.className = "locked-text";
+
+                lockedText.textContent = "LOCKED";
+
+                cardElement.appendChild(lockedText);
+
+            }
+
+
+            grid.appendChild(cardElement);
+
+        }
+
+
+        /* =========================================
+           UPDATE COLLECTION COUNTER
+        ========================================= */
+
+        let collected = 0;
+
+        cards.forEach(card => {
+
+            if (collection[card.file]) {
+
+                collected++;
+
+            }
+
+        });
+
+
+        document.getElementById(
+            "collectionCount"
+        ).textContent = collected + " / 100";
+
+
+    </script>
 
 
 </body>
