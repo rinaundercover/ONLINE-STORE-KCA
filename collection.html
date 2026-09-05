@@ -496,7 +496,14 @@
 
                 cardElement.appendChild(number);
 
+/* OPEN CARD INFO */
 
+cardElement.style.cursor = "pointer";
+
+cardElement.addEventListener("click", function() {
+    window.location.href = "card.html?card=" + encodeURIComponent(card.file);
+});
+                
                 /* DUPLICATE COUNT */
 
                 const count = collection[card.file];
