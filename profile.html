@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>I-DOLL — Create Profile</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: white;
+            color: black;
+            font-family: Arial, Helvetica, sans-serif;
+
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+        }
+
+        .profile {
+            width: 90%;
+            max-width: 450px;
+        }
+
+        .logo {
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: 5px;
+
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #666;
+
+            margin-bottom: 50px;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+
+            font-size: 11px;
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 15px;
+
+            border: 1px solid #cccccc;
+
+            background: white;
+
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+
+            outline: none;
+        }
+
+        input:focus {
+            border-color: black;
+        }
+
+        button {
+            width: 100%;
+
+            margin-top: 15px;
+
+            padding: 16px;
+
+            border: none;
+
+            background: black;
+            color: white;
+
+            font-size: 12px;
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            cursor: pointer;
+
+            transition: opacity 0.2s;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .error {
+            color: #777;
+
+            font-size: 11px;
+
+            margin-top: 15px;
+
+            display: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="profile">
+
+        <div class="logo">
+            I-DOLL
+        </div>
+
+        <div class="subtitle">
+            CREATE YOUR PROFILE
+        </div>
+
+
+        <form id="profileForm">
+
+
+            <div class="form-group">
+
+                <label for="name">
+                    NAME
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Your name"
+                    maxlength="30"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="username">
+                    INSTAGRAM USERNAME
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="@username"
+                    maxlength="30"
+                    required
+                >
+
+            </div>
+
+
+            <button type="submit">
+                ENTER I-DOLL
+            </button>
+
+
+            <div class="error" id="error">
+                Please enter your name and Instagram username.
+            </div>
+
+
+        </form>
+
+    </main>
+
+
+    <script>
+
+        const form = document.getElementById("profileForm");
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            const name = document
+                .getElementById("name")
+                .value
+                .trim();
+
+            let username = document
+                .getElementById("username")
+                .value
+                .trim();
+
+
+            if (!name || !username) {
+
+                document.getElementById("error").style.display = "block";
+
+                return;
+
+            }
+
+
+            /* Make sure username starts with @ */
+
+            if (!username.startsWith("@")) {
+
+                username = "@" + username;
+
+            }
+
+
+            /* Save profile */
+
+            const profile = {
+
+                name: name,
+                username: username
+
+            };
+
+
+            localStorage.setItem(
+                "idollProfile",
+                JSON.stringify(profile)
+            );
+
+
+            /* Enter the website */
+
+            window.location.href = "index.html";
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
