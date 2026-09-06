@@ -597,7 +597,16 @@ cardElement.addEventListener("click", function() {
             "collectionCount"
         ).textContent = collected + " / 100";
 
+/* COIN BALANCE */
 
+let coins = Number(
+    localStorage.getItem("idollCoins")
+) || 0;
+
+document.getElementById(
+    "coinBalance"
+).textContent = coins;
+        
     </script>
 
 
