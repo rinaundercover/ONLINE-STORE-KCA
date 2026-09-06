@@ -1,289 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>I-DOLL — Collection</title>
-
-    <style>
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background: white;
-            color: black;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        /* NAVIGATION */
 
-        nav {
-            height: 80px;
-            padding: 0 50px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            border-bottom: 1px solid #eeeeee;
-        }
-        
-        .logo {
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 35px;
-        }
-
-        .nav-links a {
-            color: black;
-            text-decoration: none;
-            font-size: 13px;
-            letter-spacing: 1px;
-        }
-
-        .nav-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* COLLECTION */
-
-        .collection {
-            max-width: 1200px;
-            margin: auto;
-            padding: 80px 40px;
-        }
-
-        .collection-header {
-            margin-bottom: 60px;
-        }
-
-        .collection-header h1 {
-            font-size: 55px;
-            font-weight: 700;
-            letter-spacing: -2px;
-            margin-bottom: 15px;
-        }
-
-        .collection-header p {
-            font-size: 14px;
-            color: #666666;
-        }
-
-        /* COLLECTION STATS */
-
-        .stats {
-            border-top: 1px solid #dddddd;
-            border-bottom: 1px solid #dddddd;
-
-            padding: 20px 0;
-
-            margin-bottom: 60px;
-
-            display: flex;
-            justify-content: space-between;
-
-            font-size: 12px;
-            letter-spacing: 1px;
-        }
-
-        /* ALBUM */
-
-        .album-section {
-            margin-bottom: 80px;
-        }
-
-        .album-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 25px;
-        }
-
-        /* CARDS */
-
-        .cards {
-            display: grid;
-
-            grid-template-columns: repeat(5, 1fr);
-
-            gap: 18px;
-        }
-
-        .card {
-            position: relative;
-
-            aspect-ratio: 2 / 3;
-
-            background: #f2f2f2;
-
-            border: 1px solid #e5e5e5;
-
-            overflow: hidden;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* LOCKED CARD */
-
-        .locked {
-            background: #f5f5f5;
-            color: #aaaaaa;
-        }
-
-        .locked .card-number {
-            font-size: 11px;
-            letter-spacing: 1px;
-        }
-
-        .locked-text {
-            position: absolute;
-
-            bottom: 15px;
-
-            font-size: 9px;
-
-            letter-spacing: 2px;
-
-            color: #aaaaaa;
-        }
-
-        /* OWNED CARD */
-
-        .card img {
-            width: 100%;
-            height: 100%;
-
-            object-fit: contain;
-
-            display: block;
-        }
-
-        /* CARD NUMBER */
-
-        .card-number {
-            position: absolute;
-
-            top: 10px;
-            left: 10px;
-
-            z-index: 2;
-
-            background: white;
-
-            padding: 5px 7px;
-
-            font-size: 10px;
-
-            letter-spacing: 1px;
-
-            border: 1px solid #dddddd;
-        }
-
-        /* DUPLICATE COUNT */
-
-        .duplicate-count {
-            position: absolute;
-
-            top: 10px;
-            right: 10px;
-
-            z-index: 3;
-
-            min-width: 28px;
-            height: 28px;
-
-            padding: 0 7px;
-
-            background: black;
-            color: white;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 10px;
-            font-weight: bold;
-
-            letter-spacing: 1px;
-        }
-
-        /* HIDDEN IMAGE */
-
-        .hidden-card {
-            width: 100%;
-            height: 100%;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .question {
-            font-size: 28px;
-            color: #cccccc;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 750px) {
-
-            nav {
-                padding: 0 20px;
-            }
-
-            .nav-links {
-                gap: 15px;
-            }
-
-            .nav-links a {
-                font-size: 10px;
-            }
-
-            .collection {
-                padding: 50px 20px;
-            }
-
-            .collection-header h1 {
-                font-size: 42px;
-            }
-
-            .cards {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-        }
-
-        @media (max-width: 450px) {
-
-            .cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>I-DOLL — COLLECTION</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: white;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+    height: 80px;
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.coins {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    color: black;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 1300px;
+    margin: auto;
+    padding: 70px 30px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.header h1 {
+    font-size: 45px;
+    letter-spacing: 5px;
+    margin: 0 0 15px;
+}
+
+.counter {
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+}
+
+.slot {
+    position: relative;
+    aspect-ratio: 2 / 3;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    background: #fafafa;
+}
+
+.slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.locked {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.question {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.locked-text {
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.number {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    background: white;
+    padding: 4px 7px;
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.count {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    background: black;
+    color: white;
+    padding: 5px 7px;
+    font-size: 9px;
+    font-weight: bold;
+}
+
+@media (max-width: 900px) {
+
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+}
+
+@media (max-width: 750px) {
+
+    nav {
+        padding: 0 20px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 10px;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .coins {
+        font-size: 9px;
+    }
+
+    .logo-area {
+        gap: 10px;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+}
+
+</style>
 
 </head>
 
-
 <body>
 
+<nav>
 
-    <!-- NAVIGATION -->
+    <div class="logo-area">
 
-    <nav>
+        <div class="logo">
+            I-DOLL
+        </div>
+
+        <div class="coins">
+            🪙 <span id="coinBalance">0</span>
+        </div>
+
+    </div>
 
     <div class="nav-links">
 
@@ -302,312 +229,258 @@
         <a href="market.html">
             I-DOLL MARKET
         </a>
-<span class="coins">
-        🪙 <span id="coinBalance">0</span>
-    </span>
 
-</div>
+    </div>
 
 </nav>
 
-    <!-- COLLECTION -->
 
-    <main class="collection">
+<div class="container">
 
+    <div class="header">
 
-        <div class="collection-header">
+        <h1>
+            COLLECTION
+        </h1>
 
-            <h1>
-                COLLECTION
-            </h1>
+        <div class="counter">
 
-            <p>
-                Your personal I-DOLL collection.
-            </p>
+            <span id="ownedCount">
+                0
+            </span>
+            / 100
 
         </div>
 
+    </div>
 
-        <!-- STATS -->
 
-        <div class="stats">
+    <div
+        class="grid"
+        id="collectionGrid"
+    ></div>
 
-            <span>
-                CARDS COLLECTED
-            </span>
+</div>
 
-            <span id="collectionCount">
-                0 / 100
-            </span>
 
-        </div>
+<script>
 
+const cards = [
 
-        <!-- FIRST COLLECTION -->
+    {
+        file: "IMG_6687.PNG",
+        number: "001"
+    },
 
-        <section class="album-section">
+    {
+        file: "IMG_6688.PNG",
+        number: "002"
+    },
 
-            <div class="album-title">
-                PHANTOM OF THE SPADE
-            </div>
+    {
+        file: "IMG_6689.PNG",
+        number: "003"
+    },
 
-            <div class="cards" id="cardGrid">
+    {
+        file: "IMG_6690.PNG",
+        number: "004"
+    },
 
-            </div>
+    {
+        file: "IMG_6691.PNG",
+        number: "005"
+    },
 
-        </section>
+    {
+        file: "IMG_6692.PNG",
+        number: "006"
+    },
 
+    {
+        file: "IMG_6693.PNG",
+        number: "007"
+    },
 
-    </main>
+    {
+        file: "IMG_6694.PNG",
+        number: "008"
+    },
 
+    {
+        file: "IMG_6695.PNG",
+        number: "009"
+    },
 
-    <script>
+    {
+        file: "IMG_6696.PNG",
+        number: "010"
+    },
 
-        /* =========================================
-           ALL 100 COLLECTION SLOTS
-        ========================================= */
+    {
+        file: "IMG_6697.PNG",
+        number: "011"
+    },
 
-        const cards = [
+    {
+        file: "IMG_6698.PNG",
+        number: "012"
+    },
 
-            {
-                slot: "001",
-                file: "IMG_6687.PNG"
-            },
+    {
+        file: "IMG_6699.PNG",
+        number: "013"
+    },
 
-            {
-                slot: "002",
-                file: "IMG_6688.PNG"
-            },
+    {
+        file: "IMG_6700.PNG",
+        number: "014"
+    },
 
-            {
-                slot: "003",
-                file: "IMG_6689.PNG"
-            },
+    {
+        file: "IMG_6701.PNG",
+        number: "015"
+    }
 
-            {
-                slot: "004",
-                file: "IMG_6690.PNG"
-            },
+];
 
-            {
-                slot: "005",
-                file: "IMG_6691.PNG"
-            },
 
-            {
-                slot: "006",
-                file: "IMG_6692.PNG"
-            },
+let collection = JSON.parse(
+    localStorage.getItem("idollCollection")
+) || {};
 
-            {
-                slot: "007",
-                file: "IMG_6693.PNG"
-            },
 
-            {
-                slot: "008",
-                file: "IMG_6694.PNG"
-            },
+const grid = document.getElementById(
+    "collectionGrid"
+);
 
-            {
-                slot: "009",
-                file: "IMG_6695.PNG"
-            },
 
-            {
-                slot: "010",
-                file: "IMG_6696.PNG"
-            },
+let owned = 0;
 
-            {
-                slot: "011",
-                file: "IMG_6697.PNG"
-            },
 
-            {
-                slot: "012",
-                file: "IMG_6698.PNG"
-            },
+for (let i = 1; i <= 100; i++) {
 
-            {
-                slot: "013",
-                file: "IMG_6699.PNG"
-            },
+    const slot = document.createElement("div");
 
-            {
-                slot: "014",
-                file: "IMG_6700.PNG"
-            },
+    slot.className = "slot";
 
-            {
-                slot: "015",
-                file: "IMG_6701.PNG"
-            }
 
-        ];
+    const number = document.createElement("div");
 
+    number.className = "number";
 
-        /* =========================================
-           LOAD SAVED COLLECTION
-        ========================================= */
+    number.textContent =
+        String(i).padStart(3, "0");
 
-        let collection = JSON.parse(
-            localStorage.getItem("idollCollection")
-        ) || {};
+    slot.appendChild(number);
 
 
-        /* =========================================
-           CREATE 100 SLOTS
-        ========================================= */
+    const card = cards[i - 1];
 
-        const grid = document.getElementById("cardGrid");
 
-        for (let i = 1; i <= 100; i++) {
+    if (card && collection[card.file]) {
 
-            const slotNumber = String(i).padStart(3, "0");
+        owned++;
 
-            const card = cards.find(
-                card => card.slot === slotNumber
-            );
 
-            const cardElement = document.createElement("div");
+        const image =
+            document.createElement("img");
 
-            cardElement.className = "card";
+        image.src = card.file;
 
+        image.alt =
+            "I-DOLL card " + card.number;
 
-            /* OWNED CARD */
+        slot.appendChild(image);
 
-            if (card && collection[card.file]) {
 
-                const image = document.createElement("img");
+        slot.style.cursor = "pointer";
 
-                image.src = card.file;
 
-                image.alt = "I-DOLL photocard " + slotNumber;
+        slot.addEventListener(
+            "click",
+            function() {
 
-                cardElement.appendChild(image);
-
-
-                /* CARD NUMBER */
-
-                const number = document.createElement("div");
-
-                number.className = "card-number";
-
-                number.textContent = slotNumber;
-
-                cardElement.appendChild(number);
-
-/* OPEN CARD INFO */
-
-cardElement.style.cursor = "pointer";
-
-cardElement.addEventListener("click", function() {
-    window.location.href = "card.html?card=" + encodeURIComponent(card.file);
-});
-                
-                /* DUPLICATE COUNT */
-
-                const count = collection[card.file];
-
-                if (count > 1) {
-
-                    const duplicate = document.createElement("div");
-
-                    duplicate.className = "duplicate-count";
-
-                    duplicate.textContent = "×" + count;
-
-                    cardElement.appendChild(duplicate);
-
-                }
+                window.location.href =
+                    "card.html?card=" +
+                    encodeURIComponent(
+                        card.file
+                    );
 
             }
+        );
 
 
-            /* UNOWNED CARD */
+        if (collection[card.file] > 1) {
 
-            else {
+            const count =
+                document.createElement("div");
 
-                cardElement.classList.add("locked");
+            count.className = "count";
 
+            count.textContent =
+                "×" + collection[card.file];
 
-                const number = document.createElement("div");
-
-                number.className = "card-number";
-
-                number.textContent = slotNumber;
-
-                cardElement.appendChild(number);
-
-
-                const hidden = document.createElement("div");
-
-                hidden.className = "hidden-card";
-
-
-                const question = document.createElement("div");
-
-                question.className = "question";
-
-                question.textContent = "?";
-
-                hidden.appendChild(question);
-
-
-                cardElement.appendChild(hidden);
-
-
-                const lockedText = document.createElement("div");
-
-                lockedText.className = "locked-text";
-
-                lockedText.textContent = "LOCKED";
-
-                cardElement.appendChild(lockedText);
-
-            }
-
-
-            grid.appendChild(cardElement);
+            slot.appendChild(count);
 
         }
 
+    } else {
 
-        /* =========================================
-           UPDATE COLLECTION COUNTER
-        ========================================= */
+        const locked =
+            document.createElement("div");
 
-        let collected = 0;
-
-        cards.forEach(card => {
-
-            if (collection[card.file]) {
-
-                collected++;
-
-            }
-
-        });
+        locked.className = "locked";
 
 
-        document.getElementById(
-            "collectionCount"
-        ).textContent = collected + " / 100";
+        const question =
+            document.createElement("div");
 
-/* COIN BALANCE */
+        question.className = "question";
 
-let coins = Number(
-    localStorage.getItem("idollCoins")
-) || 0;
+        question.textContent = "?";
+
+
+        const lockedText =
+            document.createElement("div");
+
+        lockedText.className =
+            "locked-text";
+
+        lockedText.textContent =
+            "LOCKED";
+
+
+        locked.appendChild(question);
+
+        locked.appendChild(lockedText);
+
+        slot.appendChild(locked);
+
+    }
+
+
+    grid.appendChild(slot);
+
+}
+
+
+document.getElementById(
+    "ownedCount"
+).textContent = owned;
+
+
+let coins =
+    Number(
+        localStorage.getItem("idollCoins")
+    ) || 0;
+
 
 document.getElementById(
     "coinBalance"
 ).textContent = coins;
-        
-    </script>
 
+</script>
 
 </body>
-
 </html>
