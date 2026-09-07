@@ -85,6 +85,15 @@
         }
 
 
+        /* FREE PURCHASE COUNTER */
+
+        .purchase-counter {
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-top: 15px;
+        }
+
+
         /* ALBUM GRID */
 
         .albums {
@@ -152,6 +161,9 @@
 
             font-size: 11px;
             letter-spacing: 1px;
+
+            cursor: pointer;
+            border: none;
         }
 
         .purchase:hover {
@@ -213,13 +225,13 @@
         <div class="logo">
             I-DOLL
         </div>
-     
+
         <div class="nav-links">
 
-        <a href="index.html">HOME</a>
-        <a href="store.html">STORE</a>
-        <a href="collection.html">COLLECTION</a>
-        <a href="market.html">I-DOLL MARKET</a>
+            <a href="index.html">HOME</a>
+            <a href="store.html">STORE</a>
+            <a href="collection.html">COLLECTION</a>
+            <a href="market.html">I-DOLL MARKET</a>
 
         </div>
 
@@ -240,6 +252,10 @@
                 Explore the I-DOLL digital album collection.
             </p>
 
+            <div class="purchase-counter">
+                FREE PURCHASES LEFT: <span id="freePurchases">10</span>/10
+            </div>
+
         </div>
 
 
@@ -251,8 +267,13 @@
             <div class="album">
 
                 <div class="album-cover">
-                <img src="IMG_6686.JPG" alt="first collection album cover" style="width:100%; height:100%; object-fit:cover;">
-                    
+
+                    <img
+                        src="IMG_6686.JPG"
+                        alt="first collection album cover"
+                        style="width:100%; height:100%; object-fit:cover;"
+                    >
+
                 </div>
 
                 <div class="album-name">
@@ -267,9 +288,9 @@
                     FREE
                 </div>
 
-                <a href="album1.html" class="purchase">
+                <button class="purchase" onclick="purchaseAlbum()">
                     PURCHASE
-                </a>
+                </button>
 
             </div>
 
@@ -331,6 +352,50 @@
         </section>
 
     </main>
+
+
+    <script>
+
+        /* GET CURRENT FREE PURCHASES */
+
+        let freePurchases = localStorage.getItem("idollFreePurchases");
+
+        if (freePurchases === null) {
+            freePurchases = 10;
+            localStorage.setItem("idollFreePurchases", freePurchases);
+        }
+
+        freePurchases = Number(freePurchases);
+
+        document.getElementById("freePurchases").textContent = freePurchases;
+
+
+        /* PURCHASE ALBUM */
+
+        function purchaseAlbum() {
+
+            if (freePurchases > 0) {
+
+                freePurchases--;
+
+                localStorage.setItem(
+                    "idollFreePurchases",
+                    freePurchases
+                );
+
+                window.location.href = "album1.html";
+
+            } else {
+
+                alert(
+                    "You have used all 10 free purchases. You now need I-DOLL coins to purchase another album."
+                );
+
+            }
+
+        }
+
+    </script>
 
 
 </body>
