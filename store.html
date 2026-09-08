@@ -358,12 +358,12 @@
 
         /* GET CURRENT FREE PURCHASES */
 
-        let freePurchases = localStorage.getItem("idollFreePurchases");
+       let freePurchases = localStorage.getItem("idollFreePurchases_phantom");
 
-        if (freePurchases === null) {
-            freePurchases = 10;
-            localStorage.setItem("idollFreePurchases", freePurchases);
-        }
+if (freePurchases === null) {
+    freePurchases = 10;
+    localStorage.setItem("idollFreePurchases_phantom", freePurchases);
+}
 
         freePurchases = Number(freePurchases);
 
