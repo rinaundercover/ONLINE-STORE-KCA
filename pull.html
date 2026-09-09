@@ -848,6 +848,11 @@ setTimeout(function() {
 });
 
 </script>
-
+    
+<script>
+    let coins = Number(localStorage.getItem("idollCoins")) || 0;
+    document.getElementById("coinBalance").textContent = coins;
+</script>
+    
 </body>
 </html>
