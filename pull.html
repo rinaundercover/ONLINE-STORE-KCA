@@ -778,13 +778,16 @@ openButton.addEventListener("click", function() {
 
     }, 8000);
 
-/* SAVE PULL TO COLLECTION */
+/* SAVE PULL TO COLLECTION + GIVE 5 COINS */
 
 setTimeout(function() {
+
+    /* GET COLLECTION */
 
     let collection = JSON.parse(
         localStorage.getItem("idollCollection")
     ) || {};
+
 
     /* SAVE CARD 1 */
 
@@ -817,6 +820,20 @@ setTimeout(function() {
     localStorage.setItem(
         "idollCollection",
         JSON.stringify(collection)
+    );
+
+
+    /* GIVE 5 COINS */
+
+    let coins = Number(
+        localStorage.getItem("idollCoins")
+    ) || 0;
+
+    coins += 5;
+
+    localStorage.setItem(
+        "idollCoins",
+        coins
     );
 
 
