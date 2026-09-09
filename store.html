@@ -354,50 +354,98 @@
     </main>
 
 
-    <script>
+<script>
 
-        /* GET CURRENT FREE PURCHASES */
+    /* =========================================
+       PHANTOM OF THE SPADE
+       10 FREE PURCHASES
+       THEN 10 COINS EACH
+    ========================================= */
 
-       let freePurchases = localStorage.getItem("idollFreePurchases_phantom");
+    let freePurchases = localStorage.getItem("idollFreePurchases_phantom");
 
-if (freePurchases === null) {
-    freePurchases = 10;
-    localStorage.setItem("idollFreePurchases_phantom", freePurchases);
-}
+    if (freePurchases === null) {
 
-        freePurchases = Number(freePurchases);
+        freePurchases = 10;
 
-        document.getElementById("freePurchases").textContent = freePurchases;
+        localStorage.setItem(
+            "idollFreePurchases_phantom",
+            freePurchases
+        );
+
+    }
+
+    freePurchases = Number(freePurchases);
 
 
-        /* PURCHASE ALBUM */
+    /* SHOW FREE PURCHASES */
 
-        function purchaseAlbum() {
+    document.getElementById("freePurchases").textContent =
+        freePurchases;
 
-            if (freePurchases > 0) {
 
-                freePurchases--;
+    /* =========================================
+       PURCHASE ALBUM
+    ========================================= */
 
-                localStorage.setItem(
-    "idollFreePurchases_phantom",
-    freePurchases
-);
+    function purchaseAlbum() {
 
-                window.location.href = "album1.html";
+        /* FREE PURCHASE */
 
-            } else {
+        if (freePurchases > 0) {
 
-                alert(
-                    "You have used all 10 free purchases. You now need I-DOLL coins to purchase another album."
-                );
+            freePurchases--;
 
-            }
+            localStorage.setItem(
+                "idollFreePurchases_phantom",
+                freePurchases
+            );
 
+            window.location.href = "album1.html";
+
+            return;
         }
 
-    </script>
+
+        /* =====================================
+           PAID PURCHASE
+           10 COINS
+        ===================================== */
+
+        let coins =
+            Number(localStorage.getItem("idollCoins")) || 0;
 
 
+        /* NOT ENOUGH COINS */
+
+        if (coins < 10) {
+
+            alert(
+                "You need 🪙 10 coins to purchase this album."
+            );
+
+            return;
+        }
+
+
+        /* TAKE 10 COINS */
+
+        coins -= 10;
+
+        localStorage.setItem(
+            "idollCoins",
+            coins
+        );
+
+
+        /* OPEN ALBUM */
+
+        window.location.href = "album1.html";
+
+    }
+
+</script>
+    
 </body>
 
 </html>
