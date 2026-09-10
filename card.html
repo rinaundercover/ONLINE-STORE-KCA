@@ -21,8 +21,6 @@
             min-height: 100vh;
         }
 
-        /* NAVIGATION */
-
         nav {
             height: 70px;
             border-bottom: 1px solid black;
@@ -56,8 +54,6 @@
             opacity: 0.5;
         }
 
-        /* PAGE */
-
         .page {
             min-height: calc(100vh - 70px);
             display: flex;
@@ -75,8 +71,6 @@
             align-items: center;
         }
 
-        /* CARD IMAGE */
-
         .card-image {
             width: 100%;
             max-width: 400px;
@@ -93,8 +87,6 @@
             height: 100%;
             object-fit: contain;
         }
-
-        /* DETAILS */
 
         .details {
             border-left: 1px solid black;
@@ -137,7 +129,7 @@
             letter-spacing: 1px;
         }
 
-        /* SELL DUPLICATE */
+        /* SELL BUTTON */
 
         .sell-button {
             width: 100%;
@@ -155,8 +147,6 @@
         .sell-button:hover {
             background: #333333;
         }
-
-        /* BACK BUTTON */
 
         .back-button {
             display: inline-block;
@@ -176,8 +166,6 @@
             color: white;
         }
 
-        /* ERROR */
-
         .error {
             text-align: center;
         }
@@ -186,8 +174,6 @@
             font-size: 30px;
             margin-bottom: 15px;
         }
-
-        /* MOBILE */
 
         @media (max-width: 700px) {
 
@@ -214,40 +200,26 @@
             h1 {
                 font-size: 32px;
             }
-
         }
-
     </style>
-
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
-
     <nav>
-
-        <!-- COINS ON THE LEFT -->
 
         <div class="coins">
             🪙 <span id="coinBalance">0</span>
         </div>
 
-        <!-- CATEGORIES ON THE RIGHT -->
-
         <div class="nav-links">
-
             <a href="index.html">HOME</a>
             <a href="store.html">STORE</a>
             <a href="collection.html">COLLECTION</a>
             <a href="market.html">I-DOLL MARKET</a>
-
         </div>
 
     </nav>
-
-
-    <!-- CARD PAGE -->
 
     <main class="page">
 
@@ -386,7 +358,20 @@
 
 
         /* =========================================
-           SHOW CARD
+           SELL PRICES
+        ========================================= */
+
+        const sellPrices = {
+
+            COMMON: 100,
+            RARE: 150,
+            LEGENDARY: 200
+
+        };
+
+
+        /* =========================================
+           DISPLAY CARD
         ========================================= */
 
         if (!card) {
@@ -408,6 +393,14 @@
             `;
 
         } else {
+
+            const collection = JSON.parse(
+                localStorage.getItem("idollCollection")
+            ) || {};
+
+            const ownedCount =
+                Number(collection[file]) || 0;
+
 
             container.innerHTML = `
 
@@ -433,7 +426,6 @@
 
 
                     <div class="info-row">
-
                         <span class="info-label">
                             CARD NUMBER
                         </span>
@@ -441,12 +433,10 @@
                         <span class="info-value">
                             ${card.number}
                         </span>
-
                     </div>
 
 
                     <div class="info-row">
-
                         <span class="info-label">
                             MEMBER
                         </span>
@@ -454,12 +444,10 @@
                         <span class="info-value">
                             ${card.member}
                         </span>
-
                     </div>
 
 
                     <div class="info-row">
-
                         <span class="info-label">
                             RARITY
                         </span>
@@ -467,12 +455,10 @@
                         <span class="info-value rarity">
                             ${card.rarity}
                         </span>
-
                     </div>
 
 
                     <div class="info-row">
-
                         <span class="info-label">
                             VERSION
                         </span>
@@ -480,12 +466,10 @@
                         <span class="info-value">
                             ${card.version}
                         </span>
-
                     </div>
 
 
                     <div class="info-row">
-
                         <span class="info-label">
                             ALBUM
                         </span>
@@ -493,65 +477,8 @@
                         <span class="info-value">
                             PHANTOM OF THE SPADE
                         </span>
-
                     </div>
 
-
-                    <!-- DUPLICATE INFORMATION -->
-
-                    <div id="duplicateSection"></div>
-
-
-                    <a
-                        href="collection.html"
-                        class="back-button"
-                    >
-                        ← BACK TO COLLECTION
-                    </a>
-
-                </div>
-
-            `;
-
-
-            /* =========================================
-               CHECK HOW MANY COPIES ARE OWNED
-            ========================================= */
-
-            const collection = JSON.parse(
-                localStorage.getItem("idollCollection")
-            ) || {};
-
-            const ownedCount =
-                Number(collection[file]) || 0;
-
-
-            /* =========================================
-               SELLING PRICES
-            ========================================= */
-
-            const sellPrices = {
-
-                COMMON: 100,
-
-                RARE: 150,
-
-                LEGENDARY: 200
-
-            };
-
-
-            const duplicateSection =
-                document.getElementById("duplicateSection");
-
-
-            /* =========================================
-               SHOW SELL BUTTON ONLY IF DUPLICATE EXISTS
-            ========================================= */
-
-            if (ownedCount > 1) {
-
-                duplicateSection.innerHTML = `
 
                     <div class="info-row">
 
@@ -566,16 +493,30 @@
                     </div>
 
 
-                    <button
-                        class="sell-button"
-                        onclick="sellDuplicate()"
+                    ${
+                        ownedCount > 1
+                        ? `
+                            <button
+                                class="sell-button"
+                                onclick="sellDuplicate()"
+                            >
+                                SELL 1 DUPLICATE · 🪙 ${sellPrices[card.rarity]}
+                            </button>
+                        `
+                        : ""
+                    }
+
+
+                    <a
+                        href="collection.html"
+                        class="back-button"
                     >
-                        SELL 1 DUPLICATE · 🪙 ${sellPrices[card.rarity]}
-                    </button>
+                        ← BACK TO COLLECTION
+                    </a>
 
-                `;
+                </div>
 
-            }
+            `;
 
         }
 
@@ -590,12 +531,11 @@
                 localStorage.getItem("idollCollection")
             ) || {};
 
-
             let ownedCount =
                 Number(collection[file]) || 0;
 
 
-            /* NEVER SELL THE ONLY COPY */
+            /* DON'T SELL THE LAST COPY */
 
             if (ownedCount <= 1) {
 
@@ -617,15 +557,13 @@
             );
 
 
-            /* ADD COINS */
+            /* ADD THE CORRECT COINS */
 
             let coins = Number(
                 localStorage.getItem("idollCoins")
             ) || 0;
 
-
             coins += sellPrices[card.rarity];
-
 
             localStorage.setItem(
                 "idollCoins",
@@ -633,15 +571,15 @@
             );
 
 
-            /* REFRESH PAGE */
+            /* GO BACK TO COLLECTION */
 
-            location.reload();
+            window.location.href = "collection.html";
 
         }
 
 
         /* =========================================
-           SHOW CURRENT COINS
+           SHOW COINS
         ========================================= */
 
         let coins = Number(
