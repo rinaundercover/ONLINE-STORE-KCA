@@ -21,6 +21,8 @@
             min-height: 100vh;
         }
 
+        /* NAVIGATION */
+
         nav {
             height: 70px;
             border-bottom: 1px solid black;
@@ -30,10 +32,11 @@
             padding: 0 40px;
         }
 
-        .logo {
-            font-size: 24px;
+        .coins {
+            font-size: 12px;
             font-weight: bold;
-            letter-spacing: 3px;
+            letter-spacing: 1px;
+            white-space: nowrap;
         }
 
         .nav-links {
@@ -53,6 +56,8 @@
             opacity: 0.5;
         }
 
+        /* PAGE */
+
         .page {
             min-height: calc(100vh - 70px);
             display: flex;
@@ -70,6 +75,8 @@
             align-items: center;
         }
 
+        /* CARD IMAGE */
+
         .card-image {
             width: 100%;
             max-width: 400px;
@@ -86,6 +93,8 @@
             height: 100%;
             object-fit: contain;
         }
+
+        /* DETAILS */
 
         .details {
             border-left: 1px solid black;
@@ -128,6 +137,27 @@
             letter-spacing: 1px;
         }
 
+        /* SELL DUPLICATE */
+
+        .sell-button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px 20px;
+            background: black;
+            color: white;
+            border: none;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .sell-button:hover {
+            background: #333333;
+        }
+
+        /* BACK BUTTON */
+
         .back-button {
             display: inline-block;
             margin-top: 25px;
@@ -146,6 +176,8 @@
             color: white;
         }
 
+        /* ERROR */
+
         .error {
             text-align: center;
         }
@@ -155,7 +187,10 @@
             margin-bottom: 15px;
         }
 
+        /* MOBILE */
+
         @media (max-width: 700px) {
+
             nav {
                 padding: 0 20px;
             }
@@ -179,22 +214,40 @@
             h1 {
                 font-size: 32px;
             }
+
         }
+
     </style>
+
 </head>
 
 <body>
 
+    <!-- NAVIGATION -->
+
     <nav>
-        <div class="logo">I-DOLL</div>
+
+        <!-- COINS ON THE LEFT -->
+
+        <div class="coins">
+            🪙 <span id="coinBalance">0</span>
+        </div>
+
+        <!-- CATEGORIES ON THE RIGHT -->
 
         <div class="nav-links">
+
             <a href="index.html">HOME</a>
             <a href="store.html">STORE</a>
             <a href="collection.html">COLLECTION</a>
             <a href="market.html">I-DOLL MARKET</a>
+
         </div>
+
     </nav>
+
+
+    <!-- CARD PAGE -->
 
     <main class="page">
 
@@ -202,7 +255,12 @@
 
     </main>
 
+
     <script>
+
+        /* =========================================
+           CARD DATABASE
+        ========================================= */
 
         const cards = {
 
@@ -314,32 +372,54 @@
         };
 
 
-        const file = new URLSearchParams(window.location.search).get("card");
+        /* =========================================
+           GET CARD
+        ========================================= */
+
+        const file =
+            new URLSearchParams(window.location.search).get("card");
 
         const card = cards[file];
 
-        const container = document.getElementById("cardInfo");
+        const container =
+            document.getElementById("cardInfo");
 
+
+        /* =========================================
+           SHOW CARD
+        ========================================= */
 
         if (!card) {
 
             container.innerHTML = `
                 <div class="error">
+
                     <h1>CARD NOT FOUND</h1>
-                    <p>This card doesn't exist in the I-DOLL collection.</p>
+
+                    <p>
+                        This card doesn't exist in the I-DOLL collection.
+                    </p>
+
                     <a href="collection.html" class="back-button">
                         BACK TO COLLECTION
                     </a>
+
                 </div>
             `;
 
         } else {
 
             container.innerHTML = `
-                
+
                 <div class="card-image">
-                    <img src="${file}" alt="${card.member} card">
+
+                    <img
+                        src="${file}"
+                        alt="${card.member} card"
+                    >
+
                 </div>
+
 
                 <div class="details">
 
@@ -347,42 +427,232 @@
                         I-DOLL · CARD ${card.number}
                     </div>
 
-                    <h1>${card.member}</h1>
+                    <h1>
+                        ${card.member}
+                    </h1>
+
 
                     <div class="info-row">
-                        <span class="info-label">CARD NUMBER</span>
-                        <span class="info-value">${card.number}</span>
+
+                        <span class="info-label">
+                            CARD NUMBER
+                        </span>
+
+                        <span class="info-value">
+                            ${card.number}
+                        </span>
+
                     </div>
+
 
                     <div class="info-row">
-                        <span class="info-label">MEMBER</span>
-                        <span class="info-value">${card.member}</span>
+
+                        <span class="info-label">
+                            MEMBER
+                        </span>
+
+                        <span class="info-value">
+                            ${card.member}
+                        </span>
+
                     </div>
+
 
                     <div class="info-row">
-                        <span class="info-label">RARITY</span>
-                        <span class="info-value rarity">${card.rarity}</span>
+
+                        <span class="info-label">
+                            RARITY
+                        </span>
+
+                        <span class="info-value rarity">
+                            ${card.rarity}
+                        </span>
+
                     </div>
+
 
                     <div class="info-row">
-                        <span class="info-label">VERSION</span>
-                        <span class="info-value">${card.version}</span>
+
+                        <span class="info-label">
+                            VERSION
+                        </span>
+
+                        <span class="info-value">
+                            ${card.version}
+                        </span>
+
                     </div>
+
 
                     <div class="info-row">
-                        <span class="info-label">ALBUM</span>
-                        <span class="info-value">PHANTOM OF THE SPADE</span>
+
+                        <span class="info-label">
+                            ALBUM
+                        </span>
+
+                        <span class="info-value">
+                            PHANTOM OF THE SPADE
+                        </span>
+
                     </div>
 
-                    <a href="collection.html" class="back-button">
+
+                    <!-- DUPLICATE INFORMATION -->
+
+                    <div id="duplicateSection"></div>
+
+
+                    <a
+                        href="collection.html"
+                        class="back-button"
+                    >
                         ← BACK TO COLLECTION
                     </a>
 
                 </div>
+
             `;
+
+
+            /* =========================================
+               CHECK HOW MANY COPIES ARE OWNED
+            ========================================= */
+
+            const collection = JSON.parse(
+                localStorage.getItem("idollCollection")
+            ) || {};
+
+            const ownedCount =
+                Number(collection[file]) || 0;
+
+
+            /* =========================================
+               SELLING PRICES
+            ========================================= */
+
+            const sellPrices = {
+
+                COMMON: 100,
+
+                RARE: 150,
+
+                LEGENDARY: 200
+
+            };
+
+
+            const duplicateSection =
+                document.getElementById("duplicateSection");
+
+
+            /* =========================================
+               SHOW SELL BUTTON ONLY IF DUPLICATE EXISTS
+            ========================================= */
+
+            if (ownedCount > 1) {
+
+                duplicateSection.innerHTML = `
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            OWNED
+                        </span>
+
+                        <span class="info-value">
+                            x${ownedCount}
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        class="sell-button"
+                        onclick="sellDuplicate()"
+                    >
+                        SELL 1 DUPLICATE · 🪙 ${sellPrices[card.rarity]}
+                    </button>
+
+                `;
+
+            }
+
         }
+
+
+        /* =========================================
+           SELL ONE DUPLICATE
+        ========================================= */
+
+        function sellDuplicate() {
+
+            let collection = JSON.parse(
+                localStorage.getItem("idollCollection")
+            ) || {};
+
+
+            let ownedCount =
+                Number(collection[file]) || 0;
+
+
+            /* NEVER SELL THE ONLY COPY */
+
+            if (ownedCount <= 1) {
+
+                return;
+
+            }
+
+
+            /* REMOVE ONE COPY */
+
+            ownedCount--;
+
+            collection[file] = ownedCount;
+
+
+            localStorage.setItem(
+                "idollCollection",
+                JSON.stringify(collection)
+            );
+
+
+            /* ADD COINS */
+
+            let coins = Number(
+                localStorage.getItem("idollCoins")
+            ) || 0;
+
+
+            coins += sellPrices[card.rarity];
+
+
+            localStorage.setItem(
+                "idollCoins",
+                coins
+            );
+
+
+            /* REFRESH PAGE */
+
+            location.reload();
+
+        }
+
+
+        /* =========================================
+           SHOW CURRENT COINS
+        ========================================= */
+
+        let coins = Number(
+            localStorage.getItem("idollCoins")
+        ) || 0;
+
+        document.getElementById("coinBalance").textContent =
+            coins;
 
     </script>
 
 </body>
+
 </html>
