@@ -1,1 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>I-DOLL — Market</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: white;
+            color: black;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            height: 80px;
+            padding: 0 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .coins {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: black;
+            text-decoration: none;
+
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.45;
+        }
+
+
+        /* =========================
+           MARKET
+        ========================= */
+
+        .market {
+            max-width: 1100px;
+            margin: auto;
+            padding: 90px 40px 120px;
+        }
+
+        .market-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .market-header h1 {
+            font-size: 55px;
+            letter-spacing: 8px;
+            font-weight: 800;
+        }
+
+        .market-header p {
+            margin-top: 15px;
+
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #777777;
+        }
+
+
+        /* =========================
+           PRODUCTS
+        ========================= */
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+        }
+
+        .product {
+            text-align: center;
+
+            border: 1px solid #eeeeee;
+
+            padding: 45px 35px 40px;
+
+            transition:
+                transform 0.35s ease,
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-8px);
+            border-color: #cccccc;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+
+        /* =========================
+           PRODUCT IMAGE
+        ========================= */
+
+        .product-image {
+            width: 260px;
+            height: 260px;
+
+            margin: 0 auto 35px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.45s cubic-bezier(.2,.8,.2,1);
+        }
+
+        .product:hover .product-image {
+            transform: scale(1.06) rotate(-2deg);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+        }
+
+
+        /* =========================
+           PRODUCT INFO
+        ========================= */
+
+        .product h2 {
+            font-size: 22px;
+            letter-spacing: 4px;
+            margin-bottom: 12px;
+        }
+
+        .product-description {
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: #777777;
+
+            line-height: 1.7;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           OPTIONS
+        ========================= */
+
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .option {
+            padding: 13px 20px;
+
+            background: white;
+            color: black;
+
+            border: 1px solid black;
+
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s,
+                color 0.2s,
+                transform 0.2s;
+        }
+
+        .option:hover {
+            background: black;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           DECORATION PRICE
+        ========================= */
+
+        .price {
+            display: inline-block;
+
+            padding: 13px 25px;
+
+            border: 1px solid black;
+
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================
+           MARKET FOOTER
+        ========================= */
+
+        .suggestions {
+            text-align: center;
+            margin-top: 100px;
+
+            padding-top: 50px;
+
+            border-top: 1px solid #eeeeee;
+        }
+
+        .suggestions p {
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #777777;
+
+            margin-bottom: 20px;
+        }
+
+        .suggestions a {
+            display: inline-block;
+
+            padding: 14px 28px;
+
+            background: black;
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 2px;
+
+            transition: 0.2s;
+        }
+
+        .suggestions a:hover {
+            background: #333333;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 9px;
+            }
+
+            .market {
+                padding: 60px 20px 80px;
+            }
+
+            .market-header h1 {
+                font-size: 40px;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                width: 220px;
+                height: 220px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <div class="coins">
+            🪙 <span id="coinBalance">0</span>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">HOME</a>
+
+            <a href="store.html">STORE</a>
+
+            <a href="collection.html">COLLECTION</a>
+
+            <a href="market.html">I-DOLL MARKET</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         MARKET
+    ========================= -->
+
+    <main class="market">
+
+
+        <div class="market-header">
+
+            <h1>I-DOLL MARKET</h1>
+
+            <p>
+                EXTRA ITEMS · SPECIAL PACKS · DECORATIONS
+            </p>
+
+        </div>
+
+
+        <div class="products">
+
+
+            <!-- =====================
+                 KATTI EXTRA PACK
+            ====================== -->
+
+            <section class="product">
+
+                <div class="product-image">
+
+                    <img
+                        src="Untitled82_20260930001057.png"
+                        alt="KATTI EXTRA PACK"
+                    >
+
+                </div>
+
+                <h2>
+                    KATTI EXTRA PACK
+                </h2>
+
+                <p class="product-description">
+                    EXTRA PHOTOCARD PULLS<br>
+                    CHOOSE YOUR PACK
+                </p>
+
+                <div class="options">
+
+                    <button class="option">
+                        5 PULLS · 🪙 50
+                    </button>
+
+                    <button class="option">
+                        10 PULLS · 🪙 80
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================
+                 PC DECORE
+            ====================== -->
+
+            <section class="product">
+
+                <div class="product-image">
+
+                    <img
+                        src="Untitled82_20260930001130.png"
+                        alt="PC DECORE"
+                    >
+
+                </div>
+
+                <h2>
+                    PC DECORE
+                </h2>
+
+                <p class="product-description">
+                    MYSTERY DECORATION BOX<br>
+                    RANDOM DECORATION
+                </p>
+
+                <div>
+
+                    <span class="price">
+                        🪙 65
+                    </span>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+
+        <!-- =========================
+             SUGGESTIONS
+        ========================= -->
+
+        <div class="suggestions">
+
+            <p>
+                HAVE AN IDEA FOR THE I-DOLL MARKET?
+            </p>
+
+            <a
+                href="YOUR-GOOGLE-FORM-LINK-HERE"
+                target="_blank"
+            >
+                SUGGEST AN ITEM
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =========================
+         COINS
+    ========================= -->
+
+    <script>
+
+        let coins =
+            Number(localStorage.getItem("idollCoins")) || 0;
+
+        document.getElementById("coinBalance").textContent =
+            coins;
+
+    </script>
+
+
+</body>
+
+</html>
