@@ -22,10 +22,9 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
-
-        /* =========================
+        /* =========================================
            NAVIGATION
-        ========================= */
+        ========================================= */
 
         nav {
             height: 80px;
@@ -65,14 +64,14 @@
             opacity: 0.45;
         }
 
-
-        /* =========================
+        /* =========================================
            MARKET
-        ========================= */
+        ========================================= */
 
         .market {
             max-width: 1100px;
             margin: auto;
+
             padding: 90px 40px 120px;
         }
 
@@ -92,17 +91,18 @@
 
             font-size: 11px;
             letter-spacing: 3px;
+
             color: #777777;
         }
 
-
-        /* =========================
+        /* =========================================
            PRODUCTS
-        ========================= */
+        ========================================= */
 
         .products {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
+
             gap: 60px;
         }
 
@@ -121,16 +121,16 @@
 
         .product:hover {
             transform: translateY(-8px);
+
             border-color: #cccccc;
 
             box-shadow:
                 0 15px 40px rgba(0, 0, 0, 0.08);
         }
 
-
-        /* =========================
+        /* =========================================
            PRODUCT IMAGE
-        ========================= */
+        ========================================= */
 
         .product-image {
             width: 260px;
@@ -149,7 +149,9 @@
         }
 
         .product:hover .product-image {
-            transform: scale(1.06) rotate(-2deg);
+            transform:
+                scale(1.06)
+                rotate(-2deg);
         }
 
         .product-image img {
@@ -159,20 +161,17 @@
             object-fit: contain;
         }
 
-
-        /* =========================
-           PRODUCT INFO
-        ========================= */
-
         .product h2 {
             font-size: 22px;
             letter-spacing: 4px;
+
             margin-bottom: 12px;
         }
 
         .product-description {
             font-size: 11px;
             letter-spacing: 1px;
+
             color: #777777;
 
             line-height: 1.7;
@@ -180,14 +179,14 @@
             margin-bottom: 25px;
         }
 
-
-        /* =========================
+        /* =========================================
            OPTIONS
-        ========================= */
+        ========================================= */
 
         .options {
             display: flex;
             justify-content: center;
+
             gap: 12px;
         }
 
@@ -214,13 +213,9 @@
         .option:hover {
             background: black;
             color: white;
+
             transform: translateY(-2px);
         }
-
-
-        /* =========================
-           DECORATION PRICE
-        ========================= */
 
         .price {
             display: inline-block;
@@ -234,15 +229,14 @@
             letter-spacing: 1px;
         }
 
-
-        /* =========================
-           MARKET FOOTER
-        ========================= */
+        /* =========================================
+           SUGGESTIONS
+        ========================================= */
 
         .suggestions {
             text-align: center;
-            margin-top: 100px;
 
+            margin-top: 100px;
             padding-top: 50px;
 
             border-top: 1px solid #eeeeee;
@@ -251,6 +245,7 @@
         .suggestions p {
             font-size: 11px;
             letter-spacing: 2px;
+
             color: #777777;
 
             margin-bottom: 20px;
@@ -277,10 +272,211 @@
             background: #333333;
         }
 
+        /* =========================================
+           KATTI MODAL
+        ========================================= */
 
-        /* =========================
+        .katti-modal {
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(255, 255, 255, 0.94);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition:
+                opacity 0.35s ease,
+                visibility 0.35s ease;
+
+            z-index: 1000;
+        }
+
+        .katti-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* =========================================
+           KATTI BOX
+        ========================================= */
+
+        .katti-box {
+            position: relative;
+
+            width: 520px;
+            max-width: 90%;
+
+            text-align: center;
+
+            padding: 50px;
+
+            border: 1px solid #111111;
+
+            background: white;
+
+            transform: scale(0.85);
+
+            transition:
+                transform 0.4s ease;
+        }
+
+        .katti-modal.show .katti-box {
+            transform: scale(1);
+        }
+
+        /* =========================================
+           KATTI IMAGE
+        ========================================= */
+
+        .katti-opening {
+            width: 220px;
+            height: 220px;
+
+            margin: 0 auto 30px;
+        }
+
+        .katti-opening img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+        }
+
+        .katti-modal.show .katti-opening img {
+            animation:
+                kattiShake 0.8s ease;
+        }
+
+        @keyframes kattiShake {
+
+            0% {
+                transform:
+                    rotate(0deg)
+                    scale(1);
+            }
+
+            25% {
+                transform:
+                    rotate(-7deg)
+                    scale(1.08);
+            }
+
+            50% {
+                transform:
+                    rotate(7deg)
+                    scale(1.12);
+            }
+
+            75% {
+                transform:
+                    rotate(-4deg)
+                    scale(1.08);
+            }
+
+            100% {
+                transform:
+                    rotate(0deg)
+                    scale(1);
+            }
+
+        }
+
+        /* =========================================
+           KATTI TEXT
+        ========================================= */
+
+        .katti-box h2 {
+            font-size: 24px;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 10px;
+        }
+
+        .katti-box p {
+            font-size: 10px;
+
+            letter-spacing: 3px;
+
+            color: #777777;
+
+            margin-bottom: 25px;
+        }
+
+        /* =========================================
+           KATTI OPTIONS
+        ========================================= */
+
+        .katti-options {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+        }
+
+        .katti-options button {
+            padding: 14px 20px;
+
+            background: white;
+            color: black;
+
+            border: 1px solid black;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            transition:
+                0.2s;
+        }
+
+        .katti-options button:hover {
+            background: black;
+            color: white;
+
+            transform:
+                translateY(-2px);
+        }
+
+        /* =========================================
+           CLOSE BUTTON
+        ========================================= */
+
+        .katti-close {
+            position: absolute;
+
+            top: 18px;
+            right: 22px;
+
+            border: none;
+
+            background: none;
+
+            font-size: 30px;
+
+            cursor: pointer;
+
+            line-height: 1;
+        }
+
+        .katti-close:hover {
+            opacity: 0.5;
+        }
+
+        /* =========================================
            MOBILE
-        ========================= */
+        ========================================= */
 
         @media (max-width: 750px) {
 
@@ -297,7 +493,8 @@
             }
 
             .market {
-                padding: 60px 20px 80px;
+                padding:
+                    60px 20px 80px;
             }
 
             .market-header h1 {
@@ -313,6 +510,14 @@
                 height: 220px;
             }
 
+            .katti-options {
+                flex-direction: column;
+            }
+
+            .katti-options button {
+                width: 100%;
+            }
+
         }
 
     </style>
@@ -323,41 +528,54 @@
 <body>
 
 
-    <!-- =========================
+    <!-- =========================================
          NAVIGATION
-    ========================= -->
+    ========================================= -->
 
     <nav>
 
         <div class="coins">
+
             🪙 <span id="coinBalance">0</span>
+
         </div>
+
 
         <div class="nav-links">
 
-            <a href="index.html">HOME</a>
+            <a href="index.html">
+                HOME
+            </a>
 
-            <a href="store.html">STORE</a>
+            <a href="store.html">
+                STORE
+            </a>
 
-            <a href="collection.html">COLLECTION</a>
+            <a href="collection.html">
+                COLLECTION
+            </a>
 
-            <a href="market.html">I-DOLL MARKET</a>
+            <a href="market.html">
+                I-DOLL MARKET
+            </a>
 
         </div>
 
     </nav>
 
 
-    <!-- =========================
+    <!-- =========================================
          MARKET
-    ========================= -->
+    ========================================= -->
 
     <main class="market">
 
 
         <div class="market-header">
 
-            <h1>I-DOLL MARKET</h1>
+            <h1>
+                I-DOLL MARKET
+            </h1>
 
             <p>
                 EXTRA ITEMS · SPECIAL PACKS · DECORATIONS
@@ -369,13 +587,17 @@
         <div class="products">
 
 
-            <!-- =====================
+            <!-- =================================
                  KATTI EXTRA PACK
-            ====================== -->
+            ================================= -->
 
             <section class="product">
 
-                <div class="product-image">
+
+                <div
+                    class="product-image"
+                    onclick="openKattiPack()"
+                >
 
                     <img
                         src="Untitled82_20260930001057.png"
@@ -384,35 +606,41 @@
 
                 </div>
 
+
                 <h2>
                     KATTI EXTRA PACK
                 </h2>
 
+
                 <p class="product-description">
+
                     EXTRA PHOTOCARD PULLS<br>
-                    CHOOSE YOUR PACK
+                    CLICK THE PACK TO OPEN
+
                 </p>
+
 
                 <div class="options">
 
-                    <button class="option">
-                        5 PULLS · 🪙 50
-                    </button>
-
-                    <button class="option">
-                        10 PULLS · 🪙 80
+                    <button
+                        class="option"
+                        onclick="openKattiPack()"
+                    >
+                        OPEN PACK
                     </button>
 
                 </div>
 
+
             </section>
 
 
-            <!-- =====================
+            <!-- =================================
                  PC DECORE
-            ====================== -->
+            ================================= -->
 
             <section class="product">
+
 
                 <div class="product-image">
 
@@ -423,22 +651,30 @@
 
                 </div>
 
+
                 <h2>
                     PC DECORE
                 </h2>
 
+
                 <p class="product-description">
+
                     MYSTERY DECORATION BOX<br>
                     RANDOM DECORATION
+
                 </p>
+
 
                 <div>
 
                     <span class="price">
+
                         🪙 65
+
                     </span>
 
                 </div>
+
 
             </section>
 
@@ -446,22 +682,27 @@
         </div>
 
 
-        <!-- =========================
+        <!-- =====================================
              SUGGESTIONS
-        ========================= -->
+        ====================================== -->
 
         <div class="suggestions">
+
 
             <p>
                 HAVE AN IDEA FOR THE I-DOLL MARKET?
             </p>
 
+
             <a
                 href="YOUR-GOOGLE-FORM-LINK-HERE"
                 target="_blank"
             >
+
                 SUGGEST AN ITEM
+
             </a>
+
 
         </div>
 
@@ -469,17 +710,182 @@
     </main>
 
 
-    <!-- =========================
-         COINS
-    ========================= -->
+    <!-- =========================================
+         KATTI MODAL
+    ========================================= -->
+
+    <div
+        id="kattiModal"
+        class="katti-modal"
+    >
+
+
+        <div class="katti-box">
+
+
+            <button
+                class="katti-close"
+                onclick="closeKattiPack()"
+            >
+                ×
+            </button>
+
+
+            <div class="katti-opening">
+
+                <img
+                    src="Untitled82_20260930001057.png"
+                    alt="KATTI EXTRA PACK"
+                    id="kattiOpeningImage"
+                >
+
+            </div>
+
+
+            <h2>
+                KATTI EXTRA PACK
+            </h2>
+
+
+            <p>
+                CHOOSE YOUR PACK
+            </p>
+
+
+            <div class="katti-options">
+
+
+                <button
+                    onclick="selectKattiPack(5)"
+                >
+
+                    5 PULLS · 🪙 50
+
+                </button>
+
+
+                <button
+                    onclick="selectKattiPack(10)"
+                >
+
+                    10 PULLS · 🪙 80
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
 
     <script>
 
-        let coins =
-            Number(localStorage.getItem("idollCoins")) || 0;
 
-        document.getElementById("coinBalance").textContent =
-            coins;
+        /* =========================================
+           COIN BALANCE
+        ========================================= */
+
+        let coins =
+            Number(
+                localStorage.getItem("idollCoins")
+            ) || 0;
+
+
+        document.getElementById(
+            "coinBalance"
+        ).textContent = coins;
+
+
+        /* =========================================
+           OPEN KATTI PACK
+        ========================================= */
+
+        function openKattiPack() {
+
+            const modal =
+                document.getElementById(
+                    "kattiModal"
+                );
+
+
+            modal.classList.add("show");
+
+        }
+
+
+        /* =========================================
+           CLOSE KATTI PACK
+        ========================================= */
+
+        function closeKattiPack() {
+
+            const modal =
+                document.getElementById(
+                    "kattiModal"
+                );
+
+
+            modal.classList.remove("show");
+
+        }
+
+
+        /* =========================================
+           KATTI PACK SELECTION
+        ========================================= */
+
+        function selectKattiPack(amount) {
+
+
+            if (amount === 5) {
+
+                alert(
+                    "5 PULLS selected! 🪙 50"
+                );
+
+            }
+
+
+            if (amount === 10) {
+
+                alert(
+                    "10 PULLS selected! 🪙 80"
+                );
+
+            }
+
+        }
+
+
+        /* =========================================
+           CLOSE MODAL WHEN CLICKING OUTSIDE
+        ========================================= */
+
+        document
+            .getElementById("kattiModal")
+            .addEventListener(
+                "click",
+                function(event) {
+
+                    if (
+                        event.target === this
+                    ) {
+
+                        closeKattiPack();
+
+                    }
+
+                }
+            );
+
 
     </script>
 
