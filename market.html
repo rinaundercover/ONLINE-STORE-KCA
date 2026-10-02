@@ -217,18 +217,6 @@
             transform: translateY(-2px);
         }
 
-        .price {
-            display: inline-block;
-
-            padding: 13px 25px;
-
-            border: 1px solid black;
-
-            font-size: 10px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
         /* =========================================
            SUGGESTIONS
         ========================================= */
@@ -273,15 +261,15 @@
         }
 
         /* =========================================
-           KATTI MODAL
+           GENERAL MODAL
         ========================================= */
 
-        .katti-modal {
+        .modal {
             position: fixed;
 
             inset: 0;
 
-            background: rgba(255, 255, 255, 0.94);
+            background: rgba(255, 255, 255, 0.96);
 
             display: flex;
 
@@ -296,26 +284,28 @@
                 visibility 0.35s ease;
 
             z-index: 1000;
+
+            overflow-y: auto;
         }
 
-        .katti-modal.show {
+        .modal.show {
             opacity: 1;
             visibility: visible;
         }
 
-        /* =========================================
-           KATTI BOX
-        ========================================= */
-
-        .katti-box {
+        .modal-box {
             position: relative;
 
-            width: 520px;
-            max-width: 90%;
+            width: 700px;
+            max-width: 92%;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
 
             text-align: center;
 
-            padding: 50px;
+            padding: 45px;
 
             border: 1px solid #111111;
 
@@ -327,19 +317,46 @@
                 transform 0.4s ease;
         }
 
-        .katti-modal.show .katti-box {
+        .modal.show .modal-box {
             transform: scale(1);
         }
 
         /* =========================================
-           KATTI IMAGE
+           CLOSE BUTTON
+        ========================================= */
+
+        .close {
+            position: absolute;
+
+            top: 15px;
+            right: 20px;
+
+            border: none;
+
+            background: none;
+
+            font-size: 30px;
+
+            cursor: pointer;
+
+            line-height: 1;
+
+            z-index: 5;
+        }
+
+        .close:hover {
+            opacity: 0.5;
+        }
+
+        /* =========================================
+           KATTI
         ========================================= */
 
         .katti-opening {
             width: 220px;
             height: 220px;
 
-            margin: 0 auto 30px;
+            margin: 0 auto 25px;
         }
 
         .katti-opening img {
@@ -348,49 +365,6 @@
 
             object-fit: contain;
         }
-
-        .katti-modal.show .katti-opening img {
-            animation:
-                kattiShake 0.8s ease;
-        }
-
-        @keyframes kattiShake {
-
-            0% {
-                transform:
-                    rotate(0deg)
-                    scale(1);
-            }
-
-            25% {
-                transform:
-                    rotate(-7deg)
-                    scale(1.08);
-            }
-
-            50% {
-                transform:
-                    rotate(7deg)
-                    scale(1.12);
-            }
-
-            75% {
-                transform:
-                    rotate(-4deg)
-                    scale(1.08);
-            }
-
-            100% {
-                transform:
-                    rotate(0deg)
-                    scale(1);
-            }
-
-        }
-
-        /* =========================================
-           KATTI TEXT
-        ========================================= */
 
         .katti-box h2 {
             font-size: 24px;
@@ -410,10 +384,6 @@
             margin-bottom: 25px;
         }
 
-        /* =========================================
-           KATTI OPTIONS
-        ========================================= */
-
         .katti-options {
             display: flex;
 
@@ -422,8 +392,9 @@
             gap: 12px;
         }
 
-        .katti-options button {
-            padding: 14px 20px;
+        .katti-options button,
+        .modal-button {
+            padding: 14px 22px;
 
             background: white;
             color: black;
@@ -441,37 +412,329 @@
                 0.2s;
         }
 
-        .katti-options button:hover {
+        .katti-options button:hover,
+        .modal-button:hover {
             background: black;
             color: white;
 
-            transform:
-                translateY(-2px);
+            transform: translateY(-2px);
         }
 
         /* =========================================
-           CLOSE BUTTON
+           KATTI OPENING
         ========================================= */
 
-        .katti-close {
-            position: absolute;
+        .katti-opening-animation {
+            animation: packShake 0.75s ease-in-out infinite;
+        }
 
-            top: 18px;
-            right: 22px;
+        @keyframes packShake {
 
-            border: none;
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
 
-            background: none;
+            25% {
+                transform: rotate(-6deg) scale(1.05);
+            }
 
-            font-size: 30px;
+            50% {
+                transform: rotate(6deg) scale(1.1);
+            }
+
+            75% {
+                transform: rotate(-4deg) scale(1.05);
+            }
+
+            100% {
+                transform: rotate(0deg) scale(1);
+            }
+
+        }
+
+        .pull-status {
+            margin-top: 20px;
+
+            font-size: 11px;
+            letter-spacing: 2px;
+
+            min-height: 18px;
+        }
+
+        /* =========================================
+           KATTI RESULTS
+        ========================================= */
+
+        .katti-results {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(110px, 1fr));
+
+            gap: 15px;
+
+            margin-top: 25px;
+        }
+
+        .katti-card {
+            border: 1px solid #eeeeee;
+
+            padding: 8px;
+
+            animation: cardAppear 0.45s ease both;
+        }
+
+        .katti-card img {
+            width: 100%;
+
+            aspect-ratio: 2 / 3;
+
+            object-fit: contain;
+        }
+
+        .katti-card-number {
+            font-size: 8px;
+
+            letter-spacing: 1px;
+
+            margin-top: 5px;
+        }
+
+        @keyframes cardAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+        }
+
+        /* =========================================
+           DECORE
+        ========================================= */
+
+        .decore-opening {
+            width: 230px;
+            height: 230px;
+
+            margin: 0 auto 25px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .decore-opening img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+        }
+
+        .decore-shake {
+            animation: mysteryShake 0.7s ease-in-out infinite;
+        }
+
+        @keyframes mysteryShake {
+
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            20% {
+                transform: rotate(-8deg) scale(1.05);
+            }
+
+            40% {
+                transform: rotate(8deg) scale(1.12);
+            }
+
+            60% {
+                transform: rotate(-7deg) scale(1.05);
+            }
+
+            80% {
+                transform: rotate(5deg) scale(1.08);
+            }
+
+            100% {
+                transform: rotate(0deg) scale(1);
+            }
+
+        }
+
+        .decore-reveal {
+            width: 250px;
+
+            margin: 0 auto 20px;
+
+            animation: revealDecoration 0.7s ease both;
+        }
+
+        .decore-reveal img {
+            width: 100%;
+
+            max-height: 280px;
+
+            object-fit: contain;
+        }
+
+        @keyframes revealDecoration {
+
+            from {
+                opacity: 0;
+                transform: scale(0.3) rotate(-15deg);
+            }
+
+            60% {
+                transform: scale(1.12) rotate(4deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
+
+        }
+
+        .rarity {
+            font-size: 11px;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 10px;
+        }
+
+        .decore-title {
+            font-size: 23px;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 10px;
+        }
+
+        .decore-subtitle {
+            font-size: 10px;
+
+            color: #777777;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 25px;
+        }
+
+        /* =========================================
+           CARD SELECT
+        ========================================= */
+
+        .owned-title {
+            font-size: 12px;
+
+            letter-spacing: 3px;
+
+            margin-top: 25px;
+            margin-bottom: 20px;
+        }
+
+        .owned-cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fill, minmax(100px, 1fr));
+
+            gap: 15px;
+
+            max-height: 350px;
+
+            overflow-y: auto;
+
+            padding: 5px;
+        }
+
+        .owned-card {
+            background: white;
+
+            border: 1px solid #dddddd;
+
+            padding: 7px;
 
             cursor: pointer;
 
-            line-height: 1;
+            transition:
+                transform 0.2s,
+                border-color 0.2s,
+                box-shadow 0.2s;
         }
 
-        .katti-close:hover {
-            opacity: 0.5;
+        .owned-card:hover {
+            transform: translateY(-5px);
+
+            border-color: black;
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .owned-card img {
+            width: 100%;
+
+            aspect-ratio: 2 / 3;
+
+            object-fit: contain;
+        }
+
+        .owned-card p {
+            margin-top: 6px;
+
+            font-size: 8px;
+
+            letter-spacing: 1px;
+        }
+
+        .owned-card span {
+            display: block;
+
+            margin-top: 3px;
+
+            font-size: 8px;
+
+            color: #777777;
+        }
+
+        .no-cards {
+            padding: 25px;
+
+            border: 1px dashed #cccccc;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            color: #777777;
+        }
+
+        /* =========================================
+           SUCCESS
+        ========================================= */
+
+        .success-message {
+            font-size: 11px;
+
+            letter-spacing: 2px;
+
+            line-height: 1.8;
+
+            margin: 20px auto;
+
+            max-width: 450px;
         }
 
         /* =========================================
@@ -518,6 +781,10 @@
                 width: 100%;
             }
 
+            .modal-box {
+                padding: 35px 20px;
+            }
+
         }
 
     </style>
@@ -535,11 +802,8 @@
     <nav>
 
         <div class="coins">
-
             🪙 <span id="coinBalance">0</span>
-
         </div>
-
 
         <div class="nav-links">
 
@@ -570,7 +834,6 @@
 
     <main class="market">
 
-
         <div class="market-header">
 
             <h1>
@@ -593,7 +856,6 @@
 
             <section class="product">
 
-
                 <div
                     class="product-image"
                     onclick="openKattiPack()"
@@ -615,7 +877,7 @@
                 <p class="product-description">
 
                     EXTRA PHOTOCARD PULLS<br>
-                    CLICK THE PACK TO OPEN
+                    CHOOSE 5 OR 10 PULLS
 
                 </p>
 
@@ -631,7 +893,6 @@
 
                 </div>
 
-
             </section>
 
 
@@ -641,12 +902,11 @@
 
             <section class="product">
 
+                <div
+                    class="product-image"
+                    onclick="openDecoreBox()"
+                >
 
-                <div class="product-image"
-                    
-                     class="product-image"
-    onclick="openDecoreBox()"
->
                     <img
                         src="Untitled82_20260930001130.png"
                         alt="PC DECORE"
@@ -663,21 +923,21 @@
                 <p class="product-description">
 
                     MYSTERY DECORATION BOX<br>
-                    RANDOM DECORATION
+                    RANDOM DECORATION · 🪙 65
 
                 </p>
 
 
-               <div class="options">
+                <div class="options">
 
-    <button
-        class="option"
-        onclick="openDecoreBox()"
-    >
-        OPEN · 🪙 65
-    </button>
+                    <button
+                        class="option"
+                        onclick="openDecoreBox()"
+                    >
+                        OPEN · 🪙 65
+                    </button>
 
-</div>
+                </div>
 
             </section>
 
@@ -691,21 +951,16 @@
 
         <div class="suggestions">
 
-
             <p>
                 HAVE AN IDEA FOR THE I-DOLL MARKET?
             </p>
-
 
             <a
                 href="YOUR-GOOGLE-FORM-LINK-HERE"
                 target="_blank"
             >
-
                 SUGGEST AN ITEM
-
             </a>
-
 
         </div>
 
@@ -719,22 +974,23 @@
 
     <div
         id="kattiModal"
-        class="katti-modal"
+        class="modal"
     >
 
-
-        <div class="katti-box">
-
+        <div class="modal-box katti-box">
 
             <button
-                class="katti-close"
+                class="close"
                 onclick="closeKattiPack()"
             >
                 ×
             </button>
 
 
-            <div class="katti-opening">
+            <div
+                class="katti-opening"
+                id="kattiOpening"
+            >
 
                 <img
                     src="Untitled82_20260930001057.png"
@@ -745,42 +1001,205 @@
             </div>
 
 
-            <h2>
+            <h2 id="kattiTitle">
                 KATTI EXTRA PACK
             </h2>
 
 
-            <p>
+            <p id="kattiSubtitle">
                 CHOOSE YOUR PACK
             </p>
 
 
-            <div class="katti-options">
-
+            <div
+                class="katti-options"
+                id="kattiOptions"
+            >
 
                 <button
                     onclick="selectKattiPack(5)"
                 >
-
                     5 PULLS · 🪙 50
-
                 </button>
-
 
                 <button
                     onclick="selectKattiPack(10)"
                 >
-
                     10 PULLS · 🪙 80
-
                 </button>
-
 
             </div>
 
 
+            <div
+                class="pull-status"
+                id="kattiStatus"
+            ></div>
+
+
+            <div
+                class="katti-results"
+                id="kattiResults"
+            ></div>
+
         </div>
 
+    </div>
+
+
+    <!-- =========================================
+         PC DECORE MODAL
+    ========================================= -->
+
+    <div
+        id="decoreModal"
+        class="modal"
+    >
+
+        <div class="modal-box">
+
+            <button
+                class="close"
+                onclick="closeDecoreBox()"
+            >
+                ×
+            </button>
+
+
+            <!-- MYSTERY BOX -->
+
+            <div id="decoreMysteryPhase">
+
+                <div
+                    class="decore-opening"
+                    id="decoreBoxAnimation"
+                >
+
+                    <img
+                        src="Untitled82_20260930001130.png"
+                        alt="PC DECORE"
+                    >
+
+                </div>
+
+
+                <h2 class="decore-title">
+                    PC DECORE
+                </h2>
+
+
+                <p class="decore-subtitle">
+                    OPEN A MYSTERY DECORATION BOX
+                </p>
+
+
+                <button
+                    class="modal-button"
+                    onclick="openMysteryDecore()"
+                >
+                    OPEN · 🪙 65
+                </button>
+
+
+                <div
+                    class="pull-status"
+                    id="decoreStatus"
+                ></div>
+
+            </div>
+
+
+            <!-- DECORATION REVEAL -->
+
+            <div
+                id="decoreRevealPhase"
+                style="display:none;"
+            >
+
+                <div class="decore-reveal">
+
+                    <img
+                        id="revealedDecoration"
+                        src=""
+                        alt="Decoration"
+                    >
+
+                </div>
+
+
+                <div
+                    class="rarity"
+                    id="revealedRarity"
+                >
+                </div>
+
+
+                <h2
+                    class="decore-title"
+                    id="revealedDecorationName"
+                >
+                    DECORATION
+                </h2>
+
+
+                <p class="decore-subtitle">
+                    CHOOSE A CARD TO APPLY IT TO
+                </p>
+
+
+                <div class="owned-title">
+                    YOUR OWNED CARDS
+                </div>
+
+
+                <div
+                    class="owned-cards"
+                    id="ownedCards"
+                ></div>
+
+            </div>
+
+
+            <!-- SUCCESS -->
+
+            <div
+                id="decoreSuccessPhase"
+                style="display:none;"
+            >
+
+                <div class="decore-reveal">
+
+                    <img
+                        id="successDecoration"
+                        src=""
+                        alt="Decoration"
+                    >
+
+                </div>
+
+
+                <h2 class="decore-title">
+                    DECORATION APPLIED
+                </h2>
+
+
+                <p
+                    class="success-message"
+                    id="decoreSuccessText"
+                >
+                </p>
+
+
+                <button
+                    class="modal-button"
+                    onclick="closeDecoreBox()"
+                >
+                    DONE
+                </button>
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -796,19 +1215,51 @@
            COIN BALANCE
         ========================================= */
 
-        let coins =
-            Number(
-                localStorage.getItem("idollCoins")
-            ) || 0;
+        function updateCoins() {
 
+            const coins =
+                Number(
+                    localStorage.getItem("idollCoins")
+                ) || 0;
 
-        document.getElementById(
-            "coinBalance"
-        ).textContent = coins;
+            document.getElementById(
+                "coinBalance"
+            ).textContent = coins;
+
+        }
+
+        updateCoins();
 
 
         /* =========================================
-           OPEN KATTI PACK
+           CARD DATABASE
+        ========================================= */
+
+        const cardFiles = [
+
+            "IMG_6687.PNG",
+            "IMG_6688.PNG",
+            "IMG_6689.PNG",
+            "IMG_6690.PNG",
+            "IMG_6691.PNG",
+
+            "IMG_6692.PNG",
+            "IMG_6693.PNG",
+            "IMG_6694.PNG",
+            "IMG_6695.PNG",
+            "IMG_6696.PNG",
+
+            "IMG_6697.PNG",
+            "IMG_6698.PNG",
+            "IMG_6699.PNG",
+            "IMG_6700.PNG",
+            "IMG_6701.PNG"
+
+        ];
+
+
+        /* =========================================
+           KATTI
         ========================================= */
 
         function openKattiPack() {
@@ -818,58 +1269,751 @@
                     "kattiModal"
                 );
 
-
             modal.classList.add("show");
+
+            document.getElementById(
+                "kattiStatus"
+            ).textContent = "";
 
         }
 
-
-        /* =========================================
-           CLOSE KATTI PACK
-        ========================================= */
 
         function closeKattiPack() {
 
-            const modal =
-                document.getElementById(
-                    "kattiModal"
-                );
+            document
+                .getElementById("kattiModal")
+                .classList.remove("show");
 
+            setTimeout(function() {
 
-            modal.classList.remove("show");
+                resetKatti();
+
+            }, 350);
 
         }
 
 
-        /* =========================================
-           KATTI PACK SELECTION
-        ========================================= */
+        function resetKatti() {
+
+            document.getElementById(
+                "kattiOpening"
+            ).style.display = "block";
+
+            document.getElementById(
+                "kattiOpeningImage"
+            ).src =
+                "Untitled82_20260930001057.png";
+
+            document.getElementById(
+                "kattiOpening"
+            ).classList.remove(
+                "katti-opening-animation"
+            );
+
+            document.getElementById(
+                "kattiTitle"
+            ).textContent =
+                "KATTI EXTRA PACK";
+
+            document.getElementById(
+                "kattiSubtitle"
+            ).textContent =
+                "CHOOSE YOUR PACK";
+
+            document.getElementById(
+                "kattiOptions"
+            ).style.display = "flex";
+
+            document.getElementById(
+                "kattiResults"
+            ).innerHTML = "";
+
+            document.getElementById(
+                "kattiStatus"
+            ).textContent = "";
+
+        }
+
 
         function selectKattiPack(amount) {
 
+            const price =
+                amount === 5 ? 50 : 80;
 
-            if (amount === 5) {
+            let coins =
+                Number(
+                    localStorage.getItem("idollCoins")
+                ) || 0;
+
+
+            /* CHECK BALANCE */
+
+            if (coins < price) {
 
                 alert(
-                    "5 PULLS selected! 🪙 50"
+                    "You need 🪙 " +
+                    price +
+                    " coins to buy this pack."
                 );
+
+                return;
 
             }
 
 
-            if (amount === 10) {
+            /* REMOVE COINS */
 
-                alert(
-                    "10 PULLS selected! 🪙 80"
+            coins -= price;
+
+            localStorage.setItem(
+                "idollCoins",
+                coins
+            );
+
+            updateCoins();
+
+
+            /* HIDE OPTIONS */
+
+            document.getElementById(
+                "kattiOptions"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "kattiOpening"
+            ).classList.add(
+                "katti-opening-animation"
+            );
+
+
+            document.getElementById(
+                "kattiTitle"
+            ).textContent =
+                "OPENING KATTI";
+
+
+            document.getElementById(
+                "kattiSubtitle"
+            ).textContent =
+                amount +
+                " PHOTOCARDS";
+
+
+            document.getElementById(
+                "kattiStatus"
+            ).textContent =
+                "SHUFFLING CARDS...";
+
+
+            setTimeout(function() {
+
+                revealKattiCards(amount);
+
+            }, 1500);
+
+        }
+
+
+        function revealKattiCards(amount) {
+
+            const results =
+                document.getElementById(
+                    "kattiResults"
                 );
 
-            }
+            results.innerHTML = "";
+
+
+            /*
+                Pick unique cards for this pack.
+                There are 15 cards, so both
+                5 and 10 pull packs can
+                contain no duplicates.
+            */
+
+            const shuffled =
+                [...cardFiles]
+                .sort(
+                    () => Math.random() - 0.5
+                );
+
+
+            const selected =
+                shuffled.slice(
+                    0,
+                    amount
+                );
+
+
+            /* ADD TO COLLECTION */
+
+            let collection =
+                JSON.parse(
+                    localStorage.getItem(
+                        "idollCollection"
+                    )
+                ) || {};
+
+
+            selected.forEach(function(file) {
+
+                if (collection[file]) {
+
+                    collection[file]++;
+
+                } else {
+
+                    collection[file] = 1;
+
+                }
+
+            });
+
+
+            localStorage.setItem(
+                "idollCollection",
+                JSON.stringify(collection)
+            );
+
+
+            /* SHOW RESULTS */
+
+            selected.forEach(
+                function(file, index) {
+
+                    const card =
+                        document.createElement(
+                            "div"
+                        );
+
+                    card.className =
+                        "katti-card";
+
+                    card.style.animationDelay =
+                        (index * 0.08) + "s";
+
+
+                    card.innerHTML = `
+
+                        <img
+                            src="${file}"
+                            alt="Photocard"
+                        >
+
+                        <div class="katti-card-number">
+                            CARD ${String(
+                                cardFiles.indexOf(file) + 1
+                            ).padStart(3, "0")}
+                        </div>
+
+                    `;
+
+
+                    results.appendChild(card);
+
+                }
+            );
+
+
+            document.getElementById(
+                "kattiOpening"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "kattiTitle"
+            ).textContent =
+                "YOUR PULLS";
+
+
+            document.getElementById(
+                "kattiSubtitle"
+            ).textContent =
+                amount +
+                " NEW PHOTOCARDS ADDED";
+
+
+            document.getElementById(
+                "kattiStatus"
+            ).textContent =
+                "CHECK YOUR COLLECTION ✦";
 
         }
 
 
         /* =========================================
-           CLOSE MODAL WHEN CLICKING OUTSIDE
+           PC DECORE
+        ========================================= */
+
+        const decorations = [
+
+            {
+                file:
+                    "Untitled81_20260929165123.png",
+
+                rarity:
+                    "COMMON"
+            },
+
+            {
+                file:
+                    "Untitled81_20260929165117.png",
+
+                rarity:
+                    "COMMON"
+            },
+
+            {
+                file:
+                    "Untitled81_20260929164525.png",
+
+                rarity:
+                    "RARE"
+            },
+
+            {
+                file:
+                    "Untitled81_20260929164555.png",
+
+                rarity:
+                    "RARE"
+            },
+
+            {
+                file:
+                    "Untitled81_20260929163250.png",
+
+                rarity:
+                    "LEGENDARY"
+            },
+
+            {
+                file:
+                    "Untitled81_20260929163300.png",
+
+                rarity:
+                    "LEGENDARY"
+            },
+
+            {
+                file:
+                    "Untitled81_20260929164023.png",
+
+                rarity:
+                    "LEGENDARY"
+            },
+
+            {
+                file:
+                    "Untitled81_20260929164032.png",
+
+                rarity:
+                    "LEGENDARY"
+            }
+
+        ];
+
+
+        let currentDecoration = null;
+
+
+        function openDecoreBox() {
+
+            document
+                .getElementById("decoreModal")
+                .classList.add("show");
+
+            resetDecore();
+
+        }
+
+
+        function closeDecoreBox() {
+
+            document
+                .getElementById("decoreModal")
+                .classList.remove("show");
+
+            setTimeout(function() {
+
+                resetDecore();
+
+            }, 350);
+
+        }
+
+
+        function resetDecore() {
+
+            document.getElementById(
+                "decoreMysteryPhase"
+            ).style.display = "block";
+
+            document.getElementById(
+                "decoreRevealPhase"
+            ).style.display = "none";
+
+            document.getElementById(
+                "decoreSuccessPhase"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "decoreStatus"
+            ).textContent = "";
+
+
+            document.getElementById(
+                "decoreBoxAnimation"
+            ).classList.remove(
+                "decore-shake"
+            );
+
+
+            currentDecoration = null;
+
+        }
+
+
+        function chooseDecoration() {
+
+            const random =
+                Math.random();
+
+
+            /*
+                60% COMMON
+                30% RARE
+                10% LEGENDARY
+            */
+
+            let rarity;
+
+
+            if (random < 0.60) {
+
+                rarity = "COMMON";
+
+            } else if (random < 0.90) {
+
+                rarity = "RARE";
+
+            } else {
+
+                rarity = "LEGENDARY";
+
+            }
+
+
+            const matching =
+                decorations.filter(
+                    function(decoration) {
+
+                        return (
+                            decoration.rarity ===
+                            rarity
+                        );
+
+                    }
+                );
+
+
+            return matching[
+                Math.floor(
+                    Math.random() *
+                    matching.length
+                )
+            ];
+
+        }
+
+
+        function openMysteryDecore() {
+
+            let coins =
+                Number(
+                    localStorage.getItem("idollCoins")
+                ) || 0;
+
+
+            /* CHECK BALANCE */
+
+            if (coins < 65) {
+
+                alert(
+                    "You need 🪙 65 coins to open a PC DECORE box."
+                );
+
+                return;
+
+            }
+
+
+            /* REMOVE COINS */
+
+            coins -= 65;
+
+            localStorage.setItem(
+                "idollCoins",
+                coins
+            );
+
+            updateCoins();
+
+
+            /* START ANIMATION */
+
+            const box =
+                document.getElementById(
+                    "decoreBoxAnimation"
+                );
+
+            box.classList.add(
+                "decore-shake"
+            );
+
+
+            document.getElementById(
+                "decoreStatus"
+            ).textContent =
+                "OPENING MYSTERY BOX...";
+
+
+            setTimeout(function() {
+
+                revealDecoration();
+
+            }, 1600);
+
+        }
+
+
+        function revealDecoration() {
+
+            currentDecoration =
+                chooseDecoration();
+
+
+            document.getElementById(
+                "decoreMysteryPhase"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "decoreRevealPhase"
+            ).style.display = "block";
+
+
+            document.getElementById(
+                "revealedDecoration"
+            ).src =
+                currentDecoration.file;
+
+
+            document.getElementById(
+                "revealedRarity"
+            ).textContent =
+                currentDecoration.rarity;
+
+
+            document.getElementById(
+                "revealedDecorationName"
+            ).textContent =
+                "NEW " +
+                currentDecoration.rarity +
+                " DECORATION";
+
+
+            showOwnedCards();
+
+        }
+
+
+        /* =========================================
+           CHOOSE OWNED CARD
+        ========================================= */
+
+        function showOwnedCards() {
+
+            const container =
+                document.getElementById(
+                    "ownedCards"
+                );
+
+            container.innerHTML = "";
+
+
+            const collection =
+                JSON.parse(
+                    localStorage.getItem(
+                        "idollCollection"
+                    )
+                ) || {};
+
+
+            const owned =
+                cardFiles.filter(
+                    function(file) {
+
+                        return (
+                            Number(
+                                collection[file]
+                            ) > 0
+                        );
+
+                    }
+                );
+
+
+            if (owned.length === 0) {
+
+                container.innerHTML = `
+
+                    <div class="no-cards">
+
+                        YOU DON'T OWN ANY
+                        PHOTOCARDS YET.
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            owned.forEach(
+                function(file) {
+
+                    const card =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    card.className =
+                        "owned-card";
+
+
+                    const count =
+                        Number(
+                            collection[file]
+                        ) || 0;
+
+
+                    card.innerHTML = `
+
+                        <img
+                            src="${file}"
+                            alt="Owned photocard"
+                        >
+
+                        <p>
+                            CARD ${String(
+                                cardFiles.indexOf(file) + 1
+                            ).padStart(3, "0")}
+                        </p>
+
+                        <span>
+                            ×${count} OWNED
+                        </span>
+
+                    `;
+
+
+                    card.onclick =
+                        function() {
+
+                            applyDecoration(
+                                file
+                            );
+
+                        };
+
+
+                    container.appendChild(card);
+
+                }
+            );
+
+        }
+
+
+        /* =========================================
+           APPLY DECORATION
+        ========================================= */
+
+        function applyDecoration(file) {
+
+            if (!currentDecoration) {
+
+                return;
+
+            }
+
+
+            let decorationsOwned =
+                JSON.parse(
+                    localStorage.getItem(
+                        "idollDecorations"
+                    )
+                ) || {};
+
+
+            /*
+                One decoration per card.
+                Applying another decoration
+                replaces the previous one.
+            */
+
+            decorationsOwned[file] =
+                currentDecoration.file;
+
+
+            localStorage.setItem(
+                "idollDecorations",
+                JSON.stringify(
+                    decorationsOwned
+                )
+            );
+
+
+            /* SUCCESS SCREEN */
+
+            document.getElementById(
+                "decoreRevealPhase"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "decoreSuccessPhase"
+            ).style.display = "block";
+
+
+            document.getElementById(
+                "successDecoration"
+            ).src =
+                currentDecoration.file;
+
+
+            document.getElementById(
+                "decoreSuccessText"
+            ).textContent =
+                "YOUR " +
+                currentDecoration.rarity +
+                " DECORATION HAS BEEN APPLIED TO CARD " +
+                String(
+                    cardFiles.indexOf(file) + 1
+                ).padStart(3, "0") +
+                ".";
+
+        }
+
+
+        /* =========================================
+           CLOSE MODALS BY CLICKING OUTSIDE
         ========================================= */
 
         document
@@ -883,6 +2027,24 @@
                     ) {
 
                         closeKattiPack();
+
+                    }
+
+                }
+            );
+
+
+        document
+            .getElementById("decoreModal")
+            .addEventListener(
+                "click",
+                function(event) {
+
+                    if (
+                        event.target === this
+                    ) {
+
+                        closeDecoreBox();
 
                     }
 
