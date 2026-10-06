@@ -32,9 +32,11 @@
         nav {
             height: 70px;
             border-bottom: 1px solid black;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             padding: 0 40px;
         }
 
@@ -56,6 +58,7 @@
         .nav-links a {
             color: black;
             text-decoration: none;
+
             font-size: 12px;
             font-weight: bold;
             letter-spacing: 1px;
@@ -73,9 +76,11 @@
 
         .page {
             min-height: calc(100vh - 70px);
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             padding: 60px 20px;
         }
 
@@ -83,9 +88,12 @@
         .card-info {
             width: 900px;
             max-width: 100%;
+
             display: grid;
             grid-template-columns: 1fr 1fr;
+
             gap: 70px;
+
             align-items: center;
         }
 
@@ -97,12 +105,15 @@
         .card-image {
             width: 100%;
             max-width: 400px;
+
             aspect-ratio: 2 / 3;
+
             margin: auto;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+
             position: relative;
         }
 
@@ -110,30 +121,36 @@
         .card-stack {
             width: 100%;
             height: 100%;
+
             position: relative;
+
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
 
-        .card-stack > img.card-base {
+        .card-base {
             width: 100%;
             height: 100%;
+
             object-fit: contain;
-            position: relative;
-            z-index: 1;
+
+            display: block;
         }
 
 
         .card-decoration {
             position: absolute;
-            inset: 0;
+
             width: 100%;
             height: 100%;
+
             object-fit: contain;
-            z-index: 2;
+
             pointer-events: none;
+
+            display: none;
         }
 
 
@@ -143,6 +160,7 @@
 
         .details {
             border-left: 1px solid black;
+
             padding-left: 45px;
         }
 
@@ -150,6 +168,7 @@
         .small-title {
             font-size: 11px;
             letter-spacing: 2px;
+
             margin-bottom: 15px;
         }
 
@@ -157,15 +176,19 @@
         h1 {
             font-size: 42px;
             letter-spacing: 2px;
+
             margin-bottom: 30px;
         }
 
 
         .info-row {
             border-top: 1px solid black;
+
             padding: 18px 0;
+
             display: flex;
             justify-content: space-between;
+
             gap: 20px;
         }
 
@@ -190,40 +213,89 @@
 
 
         /* =========================================
-           BUTTONS
+           DECORATION BUTTON
         ========================================= */
 
-        .sell-button,
         .decorate-button {
             width: 100%;
-            margin-top: 10px;
+
+            margin-top: 25px;
+
             padding: 14px 20px;
-            background: black;
-            color: white;
-            border: none;
+
+            background: white;
+            color: black;
+
+            border: 1px solid black;
+
             font-size: 11px;
             font-weight: bold;
+
             letter-spacing: 1px;
+
             cursor: pointer;
         }
 
 
-        .sell-button:hover,
         .decorate-button:hover {
+            background: black;
+            color: white;
+        }
+
+
+        /* =========================================
+           SELL DUPLICATE
+        ========================================= */
+
+        .sell-button {
+            width: 100%;
+
+            margin-top: 10px;
+
+            padding: 14px 20px;
+
+            background: black;
+            color: white;
+
+            border: none;
+
+            font-size: 11px;
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            cursor: pointer;
+        }
+
+
+        .sell-button:hover {
             background: #333333;
         }
 
 
+        /* =========================================
+           BACK BUTTON
+        ========================================= */
+
         .back-button {
             display: inline-block;
+
             margin-top: 25px;
+
             padding: 13px 25px;
+
             border: 1px solid black;
+
             color: black;
+            background: white;
+
             text-decoration: none;
+
             font-size: 11px;
             font-weight: bold;
+
             letter-spacing: 1px;
+
             transition: 0.2s;
         }
 
@@ -235,90 +307,194 @@
 
 
         /* =========================================
-           DECORATION PANEL
+           DECORATION MODAL
         ========================================= */
 
-        .decoration-panel {
-            margin-top: 20px;
-            border-top: 1px solid black;
-            padding-top: 25px;
+        .decoration-modal {
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            z-index: 1000;
+
+            padding: 30px;
         }
 
 
-        .decoration-title {
-            font-size: 11px;
-            font-weight: bold;
+        .decoration-modal.show {
+            display: flex;
+        }
+
+
+        .decoration-box {
+            width: 700px;
+            max-width: 100%;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            background: white;
+
+            border: 1px solid black;
+
+            padding: 35px;
+        }
+
+
+        .decoration-header {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 30px;
+        }
+
+
+        .decoration-header h2 {
+            font-size: 22px;
             letter-spacing: 2px;
-            margin-bottom: 8px;
+        }
+
+
+        .close-button {
+            background: none;
+            border: none;
+
+            font-size: 24px;
+
+            cursor: pointer;
         }
 
 
         .decoration-subtitle {
             font-size: 11px;
-            line-height: 1.5;
-            margin-bottom: 20px;
+
+            color: #777;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 25px;
         }
 
 
-        .decoration-grid {
+        /* =========================================
+           DECORATION INVENTORY
+        ========================================= */
+
+        .decoration-inventory {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+
+            grid-template-columns:
+                repeat(auto-fill, minmax(130px, 1fr));
+
+            gap: 15px;
         }
 
 
         .decoration-item {
             border: 1px solid #dddddd;
-            padding: 8px;
+
+            padding: 12px;
+
             cursor: pointer;
-            transition: 0.2s;
-            background: white;
+
+            text-align: center;
+
+            transition: 0.15s;
         }
 
 
         .decoration-item:hover {
             border-color: black;
-            transform: translateY(-2px);
+        }
+
+
+        .decoration-item.selected {
+            border: 2px solid black;
+        }
+
+
+        .decoration-item.none-option {
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 150px;
+        }
+
+
+        .none-symbol {
+            font-size: 42px;
+
+            margin-bottom: 15px;
         }
 
 
         .decoration-item img {
             width: 100%;
-            height: 75px;
+            height: 130px;
+
             object-fit: contain;
-            display: block;
+
+            margin-bottom: 10px;
         }
 
 
-        .decoration-rarity {
-            text-align: center;
-            font-size: 8px;
+        .decoration-name {
+            font-size: 10px;
+
             font-weight: bold;
+
             letter-spacing: 1px;
-            margin-top: 7px;
+
+            margin-bottom: 5px;
         }
 
 
         .decoration-count {
-            text-align: center;
-            font-size: 8px;
-            margin-top: 3px;
-        }
-
-
-        .no-decorations {
-            font-size: 11px;
-            line-height: 1.5;
-            padding: 15px;
-            border: 1px solid #dddddd;
-        }
-
-
-        .current-decoration {
-            margin-top: 15px;
             font-size: 10px;
+
+            color: #777;
+        }
+
+
+        .empty-inventory {
+            text-align: center;
+
+            padding: 30px;
+
+            font-size: 11px;
+
+            color: #777;
+        }
+
+
+        /* =========================================
+           SUCCESS MESSAGE
+        ========================================= */
+
+        .decoration-message {
+            margin-top: 25px;
+
+            text-align: center;
+
+            font-size: 11px;
+
             letter-spacing: 1px;
-            font-weight: bold;
+
+            display: none;
         }
 
 
@@ -333,6 +509,7 @@
 
         .error h1 {
             font-size: 30px;
+
             margin-bottom: 15px;
         }
 
@@ -360,14 +537,18 @@
 
             .card-info {
                 grid-template-columns: 1fr;
+
                 gap: 35px;
             }
 
 
             .details {
                 border-left: none;
+
                 border-top: 1px solid black;
+
                 padding-left: 0;
+
                 padding-top: 30px;
             }
 
@@ -377,8 +558,8 @@
             }
 
 
-            .decoration-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .decoration-box {
+                padding: 20px;
             }
 
         }
@@ -418,14 +599,68 @@
 
 
     <!-- =========================================
-         MAIN
+         CARD PAGE
     ========================================= -->
 
     <main class="page">
 
-        <div class="card-info" id="cardInfo"></div>
+        <div
+            class="card-info"
+            id="cardInfo"
+        ></div>
 
     </main>
+
+
+    <!-- =========================================
+         DECORATION MODAL
+    ========================================= -->
+
+    <div
+        class="decoration-modal"
+        id="decorationModal"
+    >
+
+        <div class="decoration-box">
+
+
+            <div class="decoration-header">
+
+                <h2>
+                    PC DECORE
+                </h2>
+
+
+                <button
+                    class="close-button"
+                    onclick="closeDecorationInventory()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <p class="decoration-subtitle">
+                CHOOSE A DECORATION FOR THIS CARD
+            </p>
+
+
+            <div
+                class="decoration-inventory"
+                id="decorationInventory"
+            ></div>
+
+
+            <div
+                class="decoration-message"
+                id="decorationMessage"
+            ></div>
+
+
+        </div>
+
+    </div>
 
 
     <script>
@@ -546,40 +781,48 @@
 
 
         /* =========================================
-           DECORATION DATABASE
+           DECORATIONS
         ========================================= */
 
         const decorations = {
 
             "Untitled81_20260929165123.png": {
+                name: "COMMON DECORE 01",
                 rarity: "COMMON"
             },
 
             "Untitled81_20260929165117.png": {
+                name: "COMMON DECORE 02",
                 rarity: "COMMON"
             },
 
             "Untitled81_20260929164525.png": {
+                name: "RARE DECORE 01",
                 rarity: "RARE"
             },
 
             "Untitled81_20260929164555.png": {
+                name: "RARE DECORE 02",
                 rarity: "RARE"
             },
 
             "Untitled81_20260929163250.png": {
+                name: "LEGENDARY DECORE 01",
                 rarity: "LEGENDARY"
             },
 
             "Untitled81_20260929163300.png": {
+                name: "LEGENDARY DECORE 02",
                 rarity: "LEGENDARY"
             },
 
             "Untitled81_20260929164023.png": {
+                name: "LEGENDARY DECORE 03",
                 rarity: "LEGENDARY"
             },
 
             "Untitled81_20260929164032.png": {
+                name: "LEGENDARY DECORE 04",
                 rarity: "LEGENDARY"
             }
 
@@ -591,7 +834,9 @@
         ========================================= */
 
         const file =
-            new URLSearchParams(window.location.search).get("card");
+            new URLSearchParams(
+                window.location.search
+            ).get("card");
 
 
         const card = cards[file];
@@ -602,7 +847,7 @@
 
 
         /* =========================================
-           SELL PRICES
+           SELLING PRICES
         ========================================= */
 
         const sellPrices = {
@@ -617,69 +862,47 @@
 
 
         /* =========================================
-           GET DECORATION INVENTORY
+           SHOW CARD
         ========================================= */
 
-        function getDecorationInventory() {
+        function showCard() {
 
-            return JSON.parse(
-                localStorage.getItem("idollDecorationInventory")
-            ) || {};
+            if (!card) {
 
-        }
+                container.innerHTML = `
 
+                    <div class="error">
 
-        /* =========================================
-           GET CURRENT DECORATION
-        ========================================= */
+                        <h1>
+                            CARD NOT FOUND
+                        </h1>
 
-        function getCurrentDecoration() {
+                        <p>
+                            This card doesn't exist in
+                            the I-DOLL collection.
+                        </p>
 
-            const applied =
-                JSON.parse(
-                    localStorage.getItem("idollDecorations")
-                ) || {};
+                        <a
+                            href="collection.html"
+                            class="back-button"
+                        >
+                            BACK TO COLLECTION
+                        </a>
 
-            return applied[file] || null;
+                    </div>
 
-        }
+                `;
 
+                return;
 
-        /* =========================================
-           DISPLAY CARD
-        ========================================= */
-
-        if (!card) {
-
-
-            container.innerHTML = `
-
-                <div class="error">
-
-                    <h1>CARD NOT FOUND</h1>
-
-                    <p>
-                        This card doesn't exist in the I-DOLL collection.
-                    </p>
-
-                    <a
-                        href="collection.html"
-                        class="back-button"
-                    >
-                        BACK TO COLLECTION
-                    </a>
-
-                </div>
-
-            `;
-
-
-        } else {
+            }
 
 
             const collection =
                 JSON.parse(
-                    localStorage.getItem("idollCollection")
+                    localStorage.getItem(
+                        "idollCollection"
+                    )
                 ) || {};
 
 
@@ -687,15 +910,19 @@
                 Number(collection[file]) || 0;
 
 
+            const decorationsApplied =
+                JSON.parse(
+                    localStorage.getItem(
+                        "idollDecorations"
+                    )
+                ) || {};
+
+
             const currentDecoration =
-                getCurrentDecoration();
+                decorationsApplied[file];
 
 
-            /* =========================================
-               CARD IMAGE + DECORATION
-            ========================================= */
-
-            let cardVisual = `
+            container.innerHTML = `
 
                 <div class="card-image">
 
@@ -707,50 +934,31 @@
                             alt="${card.member} card"
                         >
 
-                        ${
-                            currentDecoration
-                            ?
-                            `
-                                <img
-                                    class="card-decoration"
-                                    src="${currentDecoration}"
-                                    alt="Card decoration"
-                                >
-                            `
-                            :
-                            ""
-                        }
+
+                        <img
+                            class="card-decoration"
+                            id="cardDecoration"
+                            src=""
+                            alt="Card decoration"
+                        >
 
                     </div>
 
                 </div>
 
-            `;
-
-
-            /* =========================================
-               CARD DETAILS
-            ========================================= */
-
-            container.innerHTML = `
-
-                ${cardVisual}
-
 
                 <div class="details">
 
-
                     <div class="small-title">
 
-                        I-DOLL · CARD ${card.number}
+                        I-DOLL · CARD
+                        ${card.number}
 
                     </div>
 
 
                     <h1>
-
                         ${card.member}
-
                     </h1>
 
 
@@ -832,56 +1040,28 @@
                     </div>
 
 
-                    ${
-                        currentDecoration
-                        ?
-                        `
-                            <div class="current-decoration">
-
-                                ✦ DECORATED
-
-                            </div>
-                        `
-                        :
-                        ""
-                    }
+                    <button
+                        class="decorate-button"
+                        onclick="openDecorationInventory()"
+                    >
+                        DECORATE CARD
+                    </button>
 
 
                     ${
                         ownedCount > 1
-                        ?
-                        `
+                        ? `
+
                             <button
                                 class="sell-button"
-                                id="sellButton"
+                                onclick="sellDuplicate()"
                             >
-                                SELL 1 DUPLICATE · 🪙 ${sellPrices[card.rarity]}
-                            </button>
-                        `
-                        :
-                        ""
-                    }
-
-
-                    ${
-                        ownedCount > 0
-                        ?
-                        `
-                            <button
-                                class="decorate-button"
-                                id="decorateButton"
-                            >
-                                DECORATE CARD
+                                SELL 1 DUPLICATE · 🪙
+                                ${sellPrices[card.rarity]}
                             </button>
 
-                            <div
-                                class="decoration-panel"
-                                id="decorationPanel"
-                                style="display:none;"
-                            ></div>
                         `
-                        :
-                        ""
+                        : ""
                     }
 
 
@@ -892,147 +1072,99 @@
                         ← BACK TO COLLECTION
                     </a>
 
-
                 </div>
 
             `;
 
 
-            /* =========================================
-               SELL BUTTON
-            ========================================= */
-
-            const sellButton =
-                document.getElementById("sellButton");
-
-
-            if (sellButton) {
-
-                sellButton.addEventListener(
-                    "click",
-                    sellDuplicate
-                );
-
-            }
-
-
-            /* =========================================
-               DECORATE BUTTON
-            ========================================= */
-
-            const decorateButton =
-                document.getElementById("decorateButton");
-
-
-            if (decorateButton) {
-
-                decorateButton.addEventListener(
-                    "click",
-                    toggleDecorationPanel
-                );
-
-            }
+            applyCurrentDecoration();
 
         }
 
 
         /* =========================================
-           SELL ONE DUPLICATE
+           SHOW CURRENT DECORATION
         ========================================= */
 
-        function sellDuplicate() {
+        function applyCurrentDecoration() {
+
+            const decorationImage =
+                document.getElementById(
+                    "cardDecoration"
+                );
 
 
-            let collection =
+            if (!decorationImage) {
+
+                return;
+
+            }
+
+
+            const applied =
                 JSON.parse(
-                    localStorage.getItem("idollCollection")
+                    localStorage.getItem(
+                        "idollDecorations"
+                    )
                 ) || {};
 
 
-            let ownedCount =
-                Number(collection[file]) || 0;
+            const decorationFile =
+                applied[file];
 
 
-            /* DON'T SELL THE LAST COPY */
+            if (
+                decorationFile &&
+                decorations[decorationFile]
+            ) {
 
-            if (ownedCount <= 1) {
+                decorationImage.src =
+                    decorationFile;
 
-                return;
+                decorationImage.style.display =
+                    "block";
+
+            } else {
+
+                decorationImage.style.display =
+                    "none";
 
             }
-
-
-            /* REMOVE ONE COPY */
-
-            ownedCount--;
-
-
-            collection[file] =
-                ownedCount;
-
-
-            localStorage.setItem(
-                "idollCollection",
-                JSON.stringify(collection)
-            );
-
-
-            /* ADD THE CORRECT COINS */
-
-            let coins =
-                Number(
-                    localStorage.getItem("idollCoins")
-                ) || 0;
-
-
-            coins += sellPrices[card.rarity];
-
-
-            localStorage.setItem(
-                "idollCoins",
-                coins
-            );
-
-
-            /* GO BACK TO COLLECTION */
-
-            window.location.href =
-                "collection.html";
 
         }
 
 
         /* =========================================
-           OPEN / CLOSE DECORATION PANEL
+           OPEN DECORATION INVENTORY
         ========================================= */
 
-        function toggleDecorationPanel() {
+        function openDecorationInventory() {
 
-
-            const panel =
+            const modal =
                 document.getElementById(
-                    "decorationPanel"
+                    "decorationModal"
                 );
 
 
-            if (!panel) {
-
-                return;
-
-            }
+            modal.classList.add("show");
 
 
-            if (panel.style.display === "none") {
+            renderDecorationInventory();
 
-                panel.style.display = "block";
+        }
 
-                renderDecorationInventory();
 
-            } else {
+        /* =========================================
+           CLOSE DECORATION INVENTORY
+        ========================================= */
 
-                panel.style.display = "none";
+        function closeDecorationInventory() {
 
-            }
+            document
+                .getElementById(
+                    "decorationModal"
+                )
+                .classList.remove("show");
 
         }
 
@@ -1043,134 +1175,190 @@
 
         function renderDecorationInventory() {
 
-
-            const panel =
+            const container =
                 document.getElementById(
-                    "decorationPanel"
+                    "decorationInventory"
                 );
 
 
-            if (!panel) {
+            container.innerHTML = "";
 
-                return;
+
+            /*
+             * NONE IS ALWAYS AVAILABLE.
+             * It is NOT stored in the inventory
+             * and can NEVER run out.
+             */
+
+            const noneItem =
+                document.createElement("div");
+
+
+            noneItem.className =
+                "decoration-item none-option";
+
+
+            const currentApplied =
+                JSON.parse(
+                    localStorage.getItem(
+                        "idollDecorations"
+                    )
+                ) || {};
+
+
+            if (!currentApplied[file]) {
+
+                noneItem.classList.add(
+                    "selected"
+                );
 
             }
 
 
-            const inventory =
-                getDecorationInventory();
+            noneItem.innerHTML = `
 
-
-            const ownedDecorations =
-                Object.keys(inventory).filter(
-                    decoration =>
-                        inventory[decoration] > 0
-                );
-
-
-            if (ownedDecorations.length === 0) {
-
-
-                panel.innerHTML = `
-
-                    <div class="decoration-title">
-                        YOUR DECORATIONS
-                    </div>
-
-                    <div class="no-decorations">
-
-                        You don't own any decorations yet.
-                        Visit <b>I-DOLL MARKET</b> and buy
-                        a PC DECORE pack to get one.
-
-                    </div>
-
-                `;
-
-
-                return;
-
-            }
-
-
-            let html = `
-
-                <div class="decoration-title">
-
-                    YOUR DECORATIONS
-
+                <div class="none-symbol">
+                    ∅
                 </div>
 
-
-                <div class="decoration-subtitle">
-
-                    Choose a decoration to apply to this card.
-
+                <div class="decoration-name">
+                    NONE
                 </div>
 
-
-                <div class="decoration-grid">
+                <div class="decoration-count">
+                    REMOVE DECORATION
+                </div>
 
             `;
 
 
-            ownedDecorations.forEach(
-                decoration => {
+            noneItem.onclick =
+                function() {
+
+                    removeDecoration();
+
+                };
 
 
-                    const data =
-                        decorations[decoration];
-
-
-                    if (!data) {
-
-                        return;
-
-                    }
-
-
-                    html += `
-
-                        <div
-                            class="decoration-item"
-                            onclick="applyDecoration('${decoration}')"
-                        >
-
-                            <img
-                                src="${decoration}"
-                                alt="Decoration"
-                            >
-
-
-                            <div class="decoration-rarity">
-
-                                ${data.rarity}
-
-                            </div>
-
-
-                            <div class="decoration-count">
-
-                                x${inventory[decoration]}
-
-                            </div>
-
-                        </div>
-
-                    `;
-
-                }
+            container.appendChild(
+                noneItem
             );
 
 
-            html += `
+            /*
+             * LOAD EXISTING INVENTORY
+             */
 
-                </div>
+            const inventory =
+                JSON.parse(
+                    localStorage.getItem(
+                        "idollDecorationInventory"
+                    )
+                ) || {};
 
-            `;
+
+            let hasDecorations = false;
 
 
-            panel.innerHTML = html;
+            Object.keys(decorations)
+                .forEach(
+                    function(decorationFile) {
+
+                        const count =
+                            Number(
+                                inventory[
+                                    decorationFile
+                                ]
+                            ) || 0;
+
+
+                        /*
+                         * Only show decorations
+                         * that the user actually owns.
+                         */
+
+                        if (count <= 0) {
+
+                            return;
+
+                        }
+
+
+                        hasDecorations = true;
+
+
+                        const decoration =
+                            decorations[
+                                decorationFile
+                            ];
+
+
+                        const item =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        item.className =
+                            "decoration-item";
+
+
+                        if (
+                            currentApplied[file] ===
+                            decorationFile
+                        ) {
+
+                            item.classList.add(
+                                "selected"
+                            );
+
+                        }
+
+
+                        item.innerHTML = `
+
+                            <img
+                                src="${decorationFile}"
+                                alt="${decoration.name}"
+                            >
+
+                            <div class="decoration-name">
+                                ${decoration.name}
+                            </div>
+
+                            <div class="decoration-count">
+                                ×${count} OWNED
+                            </div>
+
+                        `;
+
+
+                        item.onclick =
+                            function() {
+
+                                applyDecoration(
+                                    decorationFile
+                                );
+
+                            };
+
+
+                        container.appendChild(
+                            item
+                        );
+
+                    }
+                );
+
+
+            if (!hasDecorations) {
+
+                /*
+                 * Don't show an empty message
+                 * because NONE is still available.
+                 */
+
+            }
 
         }
 
@@ -1179,99 +1367,308 @@
            APPLY DECORATION
         ========================================= */
 
-        function applyDecoration(decoration) {
-
+        function applyDecoration(
+            decorationFile
+        ) {
 
             const inventory =
-                getDecorationInventory();
+                JSON.parse(
+                    localStorage.getItem(
+                        "idollDecorationInventory"
+                    )
+                ) || {};
 
 
-            if (!inventory[decoration] ||
-                inventory[decoration] <= 0) {
+            const amount =
+                Number(
+                    inventory[decorationFile]
+                ) || 0;
+
+
+            /*
+             * Make sure the user actually owns
+             * this decoration.
+             */
+
+            if (amount <= 0) {
 
                 return;
 
             }
 
 
-            /* =========================================
-               GET CURRENTLY APPLIED DECORATION
-            ========================================= */
-
-            const applied =
+            let applied =
                 JSON.parse(
-                    localStorage.getItem("idollDecorations")
+                    localStorage.getItem(
+                        "idollDecorations"
+                    )
                 ) || {};
 
 
             const oldDecoration =
-                applied[file] || null;
+                applied[file];
 
 
-            /* =========================================
-               RETURN OLD DECORATION TO INVENTORY
-            ========================================= */
+            /*
+             * If the card already has this
+             * exact decoration, do nothing.
+             */
+
+            if (
+                oldDecoration ===
+                decorationFile
+            ) {
+
+                closeDecorationInventory();
+
+                return;
+
+            }
+
+
+            /*
+             * If another decoration is currently
+             * on this card, return that old
+             * decoration to the inventory.
+             */
 
             if (
                 oldDecoration &&
-                oldDecoration !== decoration
+                decorations[oldDecoration]
             ) {
 
-
-                if (inventory[oldDecoration]) {
-
-                    inventory[oldDecoration]++;
-
-                } else {
-
-                    inventory[oldDecoration] = 1;
-
-                }
+                inventory[oldDecoration] =
+                    (
+                        Number(
+                            inventory[oldDecoration]
+                        ) || 0
+                    ) + 1;
 
             }
 
 
-            /* =========================================
-               REMOVE NEW DECORATION FROM INVENTORY
-            ========================================= */
+            /*
+             * Remove the newly selected
+             * decoration from inventory.
+             */
 
-            inventory[decoration]--;
+            inventory[decorationFile] =
+                amount - 1;
 
 
-            if (inventory[decoration] <= 0) {
+            /*
+             * Clean up zero-count items.
+             */
 
-                delete inventory[decoration];
+            if (
+                inventory[decorationFile] <= 0
+            ) {
+
+                delete inventory[
+                    decorationFile
+                ];
 
             }
 
 
-            /* =========================================
-               APPLY TO THIS CARD
-            ========================================= */
+            /*
+             * Apply decoration to card.
+             */
 
             applied[file] =
-                decoration;
+                decorationFile;
 
-
-            /* =========================================
-               SAVE EVERYTHING
-            ========================================= */
 
             localStorage.setItem(
                 "idollDecorationInventory",
-                JSON.stringify(inventory)
+                JSON.stringify(
+                    inventory
+                )
             );
 
 
             localStorage.setItem(
                 "idollDecorations",
-                JSON.stringify(applied)
+                JSON.stringify(
+                    applied
+                )
             );
 
 
-            /* =========================================
-               REFRESH PAGE
-            ========================================= */
+            closeDecorationInventory();
+
+
+            showCard();
+
+        }
+
+
+        /* =========================================
+           REMOVE DECORATION
+        ========================================= */
+
+        function removeDecoration() {
+
+            let applied =
+                JSON.parse(
+                    localStorage.getItem(
+                        "idollDecorations"
+                    )
+                ) || {};
+
+
+            const oldDecoration =
+                applied[file];
+
+
+            /*
+             * If there is no decoration,
+             * there is nothing to remove.
+             */
+
+            if (!oldDecoration) {
+
+                closeDecorationInventory();
+
+                return;
+
+            }
+
+
+            let inventory =
+                JSON.parse(
+                    localStorage.getItem(
+                        "idollDecorationInventory"
+                    )
+                ) || {};
+
+
+            /*
+             * Return the old decoration
+             * to the user's inventory.
+             */
+
+            if (
+                decorations[oldDecoration]
+            ) {
+
+                inventory[oldDecoration] =
+                    (
+                        Number(
+                            inventory[oldDecoration]
+                        ) || 0
+                    ) + 1;
+
+            }
+
+
+            /*
+             * Remove decoration from card.
+             */
+
+            delete applied[file];
+
+
+            localStorage.setItem(
+                "idollDecorationInventory",
+                JSON.stringify(
+                    inventory
+                )
+            );
+
+
+            localStorage.setItem(
+                "idollDecorations",
+                JSON.stringify(
+                    applied
+                )
+            );
+
+
+            closeDecorationInventory();
+
+
+            showCard();
+
+        }
+
+
+        /* =========================================
+           SELL ONE DUPLICATE
+        ========================================= */
+
+        function sellDuplicate() {
+
+            let collection =
+                JSON.parse(
+                    localStorage.getItem(
+                        "idollCollection"
+                    )
+                ) || {};
+
+
+            let ownedCount =
+                Number(
+                    collection[file]
+                ) || 0;
+
+
+            /*
+             * NEVER SELL THE ONLY COPY
+             */
+
+            if (ownedCount <= 1) {
+
+                return;
+
+            }
+
+
+            /*
+             * REMOVE ONE COPY
+             */
+
+            ownedCount--;
+
+            collection[file] =
+                ownedCount;
+
+
+            localStorage.setItem(
+                "idollCollection",
+                JSON.stringify(
+                    collection
+                )
+            );
+
+
+            /*
+             * ADD COINS
+             */
+
+            let coins =
+                Number(
+                    localStorage.getItem(
+                        "idollCoins"
+                    )
+                ) || 0;
+
+
+            coins +=
+                sellPrices[
+                    card.rarity
+                ];
+
+
+            localStorage.setItem(
+                "idollCoins",
+                coins
+            );
+
+
+            /*
+             * REFRESH
+             */
 
             location.reload();
 
@@ -1279,22 +1676,60 @@
 
 
         /* =========================================
-           SHOW COINS
+           COIN BALANCE
         ========================================= */
 
-        let coins =
-            Number(
-                localStorage.getItem("idollCoins")
-            ) || 0;
+        function updateCoins() {
+
+            const coins =
+                Number(
+                    localStorage.getItem(
+                        "idollCoins"
+                    )
+                ) || 0;
 
 
-        document.getElementById(
-            "coinBalance"
-        ).textContent = coins;
+            document.getElementById(
+                "coinBalance"
+            ).textContent =
+                coins;
 
+        }
+
+
+        /* =========================================
+           CLOSE MODAL WHEN CLICKING OUTSIDE
+        ========================================= */
+
+        document
+            .getElementById(
+                "decorationModal"
+            )
+            .addEventListener(
+                "click",
+                function(event) {
+
+                    if (
+                        event.target === this
+                    ) {
+
+                        closeDecorationInventory();
+
+                    }
+
+                }
+            );
+
+
+        /* =========================================
+           START
+        ========================================= */
+
+        showCard();
+
+        updateCoins();
 
     </script>
-
 
 </body>
 
